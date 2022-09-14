@@ -1,10 +1,11 @@
 import React from 'react';
-import { SignInCita } from '../components';
+import { SignInPaciente, SignInPsicologo } from '../components';
 
 const Paciente = () => {
     return (
         <div>
-            <SignInCita />
+            <SignInPaciente />
+            <SignInPsicologo />
         </div>
     );
 };

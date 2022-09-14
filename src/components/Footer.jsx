@@ -13,7 +13,7 @@ const Footer = () => {
                                 <h4 className="card-header text-black bg-secondary mb-3">Curriculum</h4>
                                 <a className="card-link" href="https://drive.google.com/file/d/1FUZbwYadWSUwR8WSUBTO5uI4V-SdOWR1/view?usp=sharing"
                                     target="_blank" rel="noopener noreferrer">
-                                    <img className="card-img" src="https://cdn-icons-png.flaticon.com/512/3135/3135731.png" alt="" style={{ width: "25%" }} />
+                                    <img className="card-img" src="https://cdn-icons-png.flaticon.com/512/3135/3135731.png" alt="" style={{ width: "20%" }} />
                                 </a>
                             </div>
 
@@ -44,13 +44,13 @@ const Footer = () => {
                             <h4 className="card-header text-black bg-secondary mb-3">Social</h4>
                             <div className="col ">
                                 <a href="https://www.linkedin.com/in/rony-puche-a80275234/" target="_blank" rel="noopener noreferrer">
-                                    <img className="card-img mt-2" style={{ width: "25%" }} src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="" />
+                                    <img className="card-img mt-2" style={{ width: "20%" }} src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="" />
                                 </a>
 
                             </div>
                             <div className="col">
                                 <a href="https://github.com/rony171998" target="_blank" rel="noopener noreferrer">
-                                    <img className="card-img mt-2" style={{ width: "25%" }} src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="" />
+                                    <img className="card-img mt-2" style={{ width: "20%" }} src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="" />
                                 </a>
 
                             </div>

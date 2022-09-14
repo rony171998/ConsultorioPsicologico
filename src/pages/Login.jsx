@@ -8,7 +8,6 @@ const Login = () => {
   const { register, handleSubmit } = useForm();
   const form = useRef();
 
-
   const submit = (data) => {
     axios
       .post("/users/login", data)
@@ -32,7 +31,7 @@ const Login = () => {
   return (
     <div>
 
-      <Card style={{ maxWidth: "500px" }} className="mx-auto mt-5">
+      <Card style={{ maxWidth: "500px" }} className="mx-auto mt-5 text-center">
         <Card.Body>
           <h1>Login
           </h1>
@@ -59,16 +58,16 @@ const Login = () => {
                 {...register("password")}
                 type="password"
                 placeholder="Password"
+                minLength="8"
                 required
-                
-                
+                                
               />
             </Form.Group>
             <Button variant="primary" type="submit">
               Login
             </Button><br />
             <Form.Label>Don't have an account? </Form.Label>
-            <a href="#/signin"> Sign Up</a>
+            <a href="#/psicologo"> Sign Up</a>
           </Form>
         </Card.Body>
       </Card>

@@ -38,20 +38,9 @@ const NavBar = () => {
                             <NavDropdown.Item href="#/signin">
                                 Sign Up
                             </NavDropdown.Item>
-                            <NavDropdown.Item href="#/addProduct">
-                                Add Product
-                            </NavDropdown.Item>
-                            <NavDropdown.Item href="#/addCategory">
-                                Add Category
-                            </NavDropdown.Item>
+                            
                         </NavDropdown>
-                        <Nav.Link href="#/cart">
-                            <Card.Img
-                                style={{ width: "25px" }}
-                                src="https://cdn-icons-png.flaticon.com/512/6948/6948348.png"
-                            ></Card.Img>Cart
-                        </Nav.Link>
-                        <Nav.Link href="#/purchases">My Purcheses</Nav.Link>
+                        
                     </Nav>
                 </Navbar.Collapse>
             </Container>

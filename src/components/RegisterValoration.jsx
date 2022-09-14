@@ -19,7 +19,7 @@ const RegisterValoration = () => {
 
     return (
 
-        <Card className="mt-3 text-center">
+        <Card className="my-5 text-center">
             <Card.Header className="">
                 <Card.Title>Registro de Valoracion</Card.Title>
             </Card.Header>
@@ -48,9 +48,23 @@ const RegisterValoration = () => {
 
                                 <Form.Control
                                     {...register("fechaValoracion")}
-                                    type="datetime-local"
+                                    type="date"
                                     placeholder="fecha y hora de la Valoracion"
-                                    max={new Date().toISOString().split("T")[0]}
+                                    min="2022-08-01"
+                                    max="2022-10-31"
+                                    
+                                    required
+                                />
+                            </Form.Group>
+
+                            <Form.Group className="mb-2" controlId="formBasicfechaValoracion">
+
+                                <Form.Control
+                                    {...register("fechaValoracion")}
+                                    type="time"
+                                    placeholder="fecha y hora de la Valoracion"
+                                    min="07:00"
+                                    max="17:00"
                                     required
                                 />
                             </Form.Group>

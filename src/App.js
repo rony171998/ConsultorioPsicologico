@@ -1,5 +1,5 @@
 import "./App.css";
-import { Home, Login, Paciente, Psicologo } from "./pages";
+import { Home, Login, P404, Paciente, Psicologo, Signin } from "./pages";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import { NavBar, ProtectedRoutes, Footer } from "./components";
@@ -22,10 +22,12 @@ function App() {
                     />
 
                     <Route path="/login" element={<Login />} />
+                    <Route path="/signin" element={<Signin />} />
 
                     <Route element={<ProtectedRoutes />}>
                         <Route path="/paciente" element={<Paciente />} />
                         <Route path="/psicologo" element={<Psicologo />} />
+                        <Route path="*" element={<P404 />} />
                     </Route>
                 </Routes>
             </Container>
