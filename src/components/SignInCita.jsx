@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Button, Card, Col, Form, InputGroup, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import RestApiModal from "./RestApiModal";
 
 const SignInCita = () => {
     const { register, handleSubmit, reset} = useForm()
     const [show, setShow] = useState(false);
+    const navigate = useNavigate();
 
     const submit = data => {
         console.log(data);
@@ -67,7 +69,7 @@ const SignInCita = () => {
                         </Col>
                         
                     </Row>
-                    <Button variant="danger" className="mx-1" >
+                    <Button variant="danger" className="mx-1" onClick={navigate("/")}>
                         Cancelar
                     </Button>
 

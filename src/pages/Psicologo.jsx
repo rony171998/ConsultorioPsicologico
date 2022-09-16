@@ -1,24 +1,15 @@
 import React from 'react';
 import { Card, Col, Row } from 'react-bootstrap';
-import { RegisterValoration, SignInPsicologo } from '../components';
+import { ListDate, RegisterValoration } from '../components';
 
 const Psicologo = () => {
     return (
-        <div>           
-            
-            <Row className='my-auto'>
-                <Col>
-                    <Card.Img 
-                        className='w-100 h-100'
-                        src="./Psicologo.png" alt="" 
-                        />
+        <div>
+            <ListDate />
 
-                </Col>
-                <Col>
-                    <RegisterValoration />
-                </Col>
-                
-            </Row>
+            <RegisterValoration />
+
+
         </div>
     );
 };

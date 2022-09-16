@@ -1,10 +1,12 @@
 import React from 'react';
-import { SignInCita } from '../components';
+import { ListDate, SignInCita } from '../components';
 
 const Paciente = () => {
     return (
         <div>
+            <ListDate />
             <SignInCita />
+            
         </div>
     );
 };
