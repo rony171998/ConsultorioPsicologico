@@ -4,8 +4,8 @@ import { SignInPaciente, SignInPsicologo } from '../components';
 const Paciente = () => {
     return (
         <div>
-            <SignInPaciente />
-            <SignInPsicologo />
+            <SignInPaciente/>
+            
         </div>
     );
 };

@@ -12,8 +12,11 @@ const Home = () => {
                 </Col>
                 <Col>
                     <Card.Img 
-                        className='w-100 h-100'
-                        src="./ilustracion-vector-plano-consulta-psicologo-divorcio-personaje-dibujos-animados-medico-consulta-.jpg" alt="" 
+                        className='imagee'
+                        src="./ilustracion-vector-plano-consulta-psicologo-divorcio-personaje-dibujos-animados-medico-consulta-.jpg" 
+                        alt="" 
+                        
+
                         />
 
                 </Col>

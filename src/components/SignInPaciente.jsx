@@ -4,22 +4,23 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from 'yup'
 import RestApiModal from "./RestApiModal";
-
+import { registerPaciente } from "../store/slices/paciente.slice";
 
 const SignInPaciente = () => {
     const formSchema = Yup.object().shape({
-        telefono: Yup.number()
+        telefono: Yup.string()
             .required('El telefono es requerido')
-            .min(10, 'El telefono debe tener 10 digitos')
-            .max(10, 'El telefono debe tener 10 digitos'),
-        contraseña: Yup.string()
+            .matches(/^[0-9]+$/, 'El telefono debe ser numerico')
+            .min(10, 'El telefono debe tener al menos 10 digitos')
+            .max(10, 'El telefono debe tener maximo 10 digitos'),
+        password: Yup.string()
             .required('La contraseña es requerida')
             .min(5, 'La contraseña debe tener al menos 5 caracteres')
             .max(20, 'La contraseña debe tener maximo 20 caracteres'),
 
         confirmarContraseña: Yup.string()
             .required('Password is mendatory')
-            .oneOf([Yup.ref('contraseña')], 'Contraseñas no coinciden'),
+            .oneOf([Yup.ref('password')], 'Contraseñas no coinciden'),
 
         areaPsicologo: Yup.string()
             .required('El area psicológica es requerida')
@@ -42,7 +43,8 @@ const SignInPaciente = () => {
     const [show, setShow] = useState(false);
 
     const submit = data => {
-        console.log(data);
+        console.log(data)
+        registerPaciente(data)
         setShow(true);
         reset();
 
@@ -62,14 +64,14 @@ const SignInPaciente = () => {
                             <InputGroup className="mb-2">
 
                                 <Form.Control
-                                    {...register("Nombre")}
+                                    {...register("name")}
                                     type="text"
                                     placeholder="Nombre"
                                     required
                                 />
 
                                 <Form.Control
-                                    {...register("apellido")}
+                                    {...register("apellidos")}
                                     type="text"
                                     placeholder="Apellido"
                                     required
@@ -79,7 +81,7 @@ const SignInPaciente = () => {
 
                             <Form.Group
                                 className="mb-2"
-                                controlId="formBasicsexo"
+                                
                             >
 
                                 <Form.Select {...register("sexo")} required>
@@ -91,10 +93,10 @@ const SignInPaciente = () => {
                             </Form.Group>
                             <Form.Group
                                 className="mb-2"
-                                controlId="formBasiceps"
+                                
                             >
 
-                                <Form.Select {...register("eps")} required>
+                                <Form.Select {...register("EPS")} required>
                                     <option value="">EPS</option>
                                     <option value="M">Sanitas</option>
                                     <option value="F">Salu Total</option>
@@ -104,7 +106,7 @@ const SignInPaciente = () => {
 
                             <Form.Group
                                 className="mb-2"
-                                controlId="formBasicocupacion"
+                                
                             >
 
                                 <Form.Select {...register("ocupacion")} required>
@@ -118,7 +120,7 @@ const SignInPaciente = () => {
 
                             <Form.Group
                                 className="mb-2"
-                                controlId="formBasictelefono"
+                                
                             >
 
                                 <Form.Control
@@ -132,7 +134,7 @@ const SignInPaciente = () => {
                             </Form.Group>
                             <Form.Group
                                 className="mb-2"
-                                controlId="formBasicdireccion"
+                                
                             >
                                 <Form.Control
                                     {...register("direccion")}
@@ -145,7 +147,7 @@ const SignInPaciente = () => {
 
                             <Form.Group
                                 className="mb-2"
-                                controlId="formBasicfechaNacimiento"
+                                
                             >
                                 <Form.Control
                                     {...register("fechaNacimiento")}
@@ -158,7 +160,7 @@ const SignInPaciente = () => {
                                 />
                             </Form.Group>
                             <InputGroup className="mb-2">
-                                <Form.Select {...register("tipoDocumento")} required>
+                                <Form.Select {...register("TipoDocumento")} required>
                                     <option value="">Tipo de Documento</option>
                                     <option value="1">Cedula de Ciudadania</option>
                                     <option value="2">Cedula de Extranjeria</option>
@@ -166,42 +168,40 @@ const SignInPaciente = () => {
 
                                 </Form.Select>
                                 <Form.Control
-                                    {...register("identificacion")}
+                                    {...register("paciente_id")}
                                     type="number"
-                                    placeholder="Identificacion"
+                                    placeholder="Numero de Identificacion"
                                     required
                                 />
                             </InputGroup>
 
-                            <Form.Group className="mb-2" controlId="formBasiccorreo">
+                            <Form.Group className="mb-2" >
 
                                 <Form.Control
-                                    {...register("correo")}
+                                    {...register("email")}
                                     type="email"
                                     placeholder="Correo"
                                     required
                                 />
                             </Form.Group>
-                            <Form.Group className="mb-2" controlId="formBasiccontraseña">
+                            <Form.Group className="mb-2" >
 
                                 <Form.Control
-                                    className={`form-control ${errors.contraseña ? 'is-invalid' : ''}`}
-                                    {...register("contraseña")}
-                                    name="contraseña"
+                                    className={`form-control ${errors.password ? 'is-invalid' : ''}`}
+                                    {...register("password")}
                                     type="password"
                                     placeholder="Contraseña"
                                     minLength="8"
                                     maxLength="16"
                                     required
                                 />
-                                <div className="invalid-feedback">{errors.contraseña?.message}</div>
+                                <div className="invalid-feedback">{errors.password?.message}</div>
                             </Form.Group>
-                            <Form.Group className="mb-2" controlId="formBasicconfirmarContraseña">
+                            <Form.Group className="mb-2">
 
                                 <Form.Control
                                     className={`form-control ${errors.confirmarContraseña ? 'is-invalid' : ''}`}
                                     {...register("confirmarContraseña")}
-                                    name="confirmarContraseña"
                                     type="password"
                                     placeholder="Confirmar Contraseña"
                                     required

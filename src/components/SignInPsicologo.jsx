@@ -8,18 +8,19 @@ import RestApiModal from "./RestApiModal";
 const SignInPsicologo = () => {
 
     const formSchema = Yup.object().shape({
-        telefono: Yup.number()
+        telefono: Yup.string()
             .required('El telefono es requerido')
-            .min(10, 'El telefono debe tener 10 digitos')
-            .max(10, 'El telefono debe tener 10 digitos'),
-        contraseña: Yup.string()
+            .matches(/^[0-9]+$/, 'El telefono debe ser numerico')
+            .min(10, 'El telefono debe tener al menos 10 digitos')
+            .max(10, 'El telefono debe tener maximo 10 digitos'),
+        password: Yup.string()
             .required('La contraseña es requerida')
             .min(5, 'La contraseña debe tener al menos 5 caracteres')
             .max(20, 'La contraseña debe tener maximo 20 caracteres'),
 
         confirmarContraseña: Yup.string()
             .required('Password is mendatory')
-            .oneOf([Yup.ref('contraseña')], 'Contraseñas no coinciden'),
+            .oneOf([Yup.ref('password')], 'Contraseñas no coinciden'),
 
         areaPsicologo: Yup.string()
             .required('El area psicológica es requerida')
@@ -62,14 +63,14 @@ const SignInPsicologo = () => {
                             <InputGroup className="mb-2">
 
                                 <Form.Control
-                                    {...register("Nombre")}
+                                    {...register("name")}
                                     type="text"
                                     placeholder="Nombre"
                                     required
                                 />
 
                                 <Form.Control
-                                    {...register("apellido")}
+                                    {...register("apellidos")}
                                     type="text"
                                     placeholder="Apellido"
                                     required
@@ -140,42 +141,40 @@ const SignInPsicologo = () => {
 
                                 </Form.Select>
                                 <Form.Control
-                                    {...register("identificacion")}
+                                    {...register("paciente_id")}
                                     type="number"
                                     placeholder="Identificacion"
                                     required
                                 />
                             </InputGroup>
 
-                            <Form.Group className="mb-2" controlId="formBasiccorreo">
+                            <Form.Group className="mb-2" controlId="formBasicemail">
 
                                 <Form.Control
-                                    {...register("correo")}
+                                    {...register("email")}
                                     type="email"
                                     placeholder="Correo"
                                     required
                                 />
                             </Form.Group>
-                            <Form.Group className="mb-2" controlId="formBasiccontraseña">
+                            <Form.Group className="mb-2" controlId="formBasicpassword">
 
                                 <Form.Control
-                                    className={`form-control ${errors.contraseña ? 'is-invalid' : ''}`}
-                                    {...register("contraseña")}
-                                    name="contraseña"
+                                    className={`form-control ${errors.password ? 'is-invalid' : ''}`}
+                                    {...register("password")}
                                     type="password"
                                     placeholder="Contraseña"
                                     minLength="8"
                                     maxLength="16"
                                     required
                                 />
-                                <div className="invalid-feedback">{errors.contraseña?.message}</div>
+                                <div className="invalid-feedback">{errors.password?.message}</div>
                             </Form.Group>
                             <Form.Group className="mb-2" controlId="formBasicconfirmarContraseña">
 
                                 <Form.Control
                                     className={`form-control ${errors.confirmarContraseña ? 'is-invalid' : ''}`}
                                     {...register("confirmarContraseña")}
-                                    name="confirmarContraseña"
                                     type="password"
                                     placeholder="Confirmar Contraseña"
                                     required
@@ -201,16 +200,16 @@ const SignInPsicologo = () => {
 
                             <Form.Group
                                 className="mb-2"
-                                controlId="formBasicareaPsicologo"
+                                controlId="formBasicareaPsicologica"
                             >
-
                                 <Form.Control
-                                    {...register("areaPsicologo")}
+                                    className={`form-control ${errors.areaPsicologica ? 'is-invalid' : ''}`}
+                                    {...register("areaPsicologica")}
                                     type="text"
                                     placeholder="Area Psicologica"
                                     required
                                 />
-
+                                <div className="invalid-feedback">{errors.areaPsicologica?.message}</div>
                             </Form.Group>
 
                             <Form.Group
@@ -226,15 +225,16 @@ const SignInPsicologo = () => {
                                     minLength="0"
                                     defaultValue="0"
                                 />
+                                
                             </Form.Group>
 
                             <Form.Group
                                 className="mb-2"
-                                controlId="formBasicuniversidadEgreso"
+                                controlId="formBasicuniversidad"
                             >
 
                                 <Form.Control
-                                    {...register("universidadEgreso")}
+                                    {...register("universidad")}
                                     type="text"
                                     placeholder="Universidad de Egreso"
                                     required

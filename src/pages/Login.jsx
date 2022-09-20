@@ -67,7 +67,8 @@ const Login = () => {
               Login
             </Button><br />
             <Form.Label>Don't have an account? </Form.Label>
-            <a href="#/psicologo"> Sign Up</a>
+            <a href="#/signin"> Sign Up</a>
+            <li href="#/signin"> Sign Up</li>
           </Form>
         </Card.Body>
       </Card>
