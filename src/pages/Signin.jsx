@@ -1,5 +1,5 @@
 import React from 'react';
-import { SignInPaciente, SignInPsicologo } from '../components';
+import { SignInPaciente } from '../components';
 
 const Paciente = () => {
     return (

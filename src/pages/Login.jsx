@@ -2,19 +2,22 @@ import React, { useRef } from "react";
 import { Button, Card, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
 
   const { register, handleSubmit } = useForm();
   const form = useRef();
+  const navigate = useNavigate();
 
   const submit = (data) => {
     axios
-      .post("/users/login", data)
+      .post("/paciente/login", data)
       .then((res) => {
         localStorage.setItem("token", res.data.token)
         localStorage.setItem("user", data.email);
         alert("Sesión iniciada correctamente");
+        navigate("/paciente");
       })
       .catch((error) => {
         
@@ -68,7 +71,7 @@ const Login = () => {
             </Button><br />
             <Form.Label>Don't have an account? </Form.Label>
             <a href="#/signin"> Sign Up</a>
-            <li href="#/signin"> Sign Up</li>
+            
           </Form>
         </Card.Body>
       </Card>
