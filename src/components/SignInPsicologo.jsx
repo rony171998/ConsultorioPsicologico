@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Card, Col, Form, InputGroup, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from 'yup'
-import RestApiModal from "./RestApiModal";
 
 const SignInPsicologo = () => {
 
@@ -40,16 +39,12 @@ const SignInPsicologo = () => {
     const formOptions = { resolver: yupResolver(formSchema) }
     const { register, handleSubmit, reset, formState } = useForm(formOptions)
     const { errors } = formState
-    const [show, setShow] = useState(false);
 
     const submit = data => {
         console.log(data);
-        setShow(true);
         reset();
 
     };
-
-    const handleClose = () => setShow(false);
 
     return (
         <Card className="mt-3 text-center">
@@ -263,8 +258,6 @@ const SignInPsicologo = () => {
                     <Button variant="primary" type="submit" className="mx-1">
                         Registrar
                     </Button>
-
-                    <RestApiModal show={show} handleClose={handleClose} />
 
                 </Form>
             </Card.Body>

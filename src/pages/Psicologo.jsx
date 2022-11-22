@@ -1,15 +1,14 @@
 import React from 'react';
-import { Card, Col, Row } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import { ListDate, RegisterValoration } from '../components';
 
 const Psicologo = () => {
     return (
         <div>
-            <ListDate />
-
-            <RegisterValoration />
-
-
+            <Row>
+                <Col><ListDate /></Col>
+                <Col><RegisterValoration /></Col>
+            </Row>
         </div>
     );
 };

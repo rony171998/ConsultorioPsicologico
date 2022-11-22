@@ -5,42 +5,54 @@ const NavBar = () => {
     return (
         <Navbar bg="primary" expand="lg">
             <Container>
-                <Navbar.Brand href="/"> Smart-Mart </Navbar.Brand>
+                <Navbar.Brand href="/"> VitalMente </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="navbarColor02">
                     <Nav className="me-auto">
-                        <Nav.Link href="/" >Home</Nav.Link>
+                        <Nav.Link href="#/">Home</Nav.Link>
                         <NavDropdown title="Registrar" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="/">Electronics</NavDropdown.Item>
-                            <NavDropdown.Item href="/">Clothing</NavDropdown.Item>
-                            <NavDropdown.Item href="/">Books</NavDropdown.Item>
-                            <NavDropdown.Item href="/">Movies</NavDropdown.Item>
-                            <NavDropdown.Item href="/">Sports</NavDropdown.Item>
-                            <NavDropdown.Item href="/">Other</NavDropdown.Item>
+                            <NavDropdown.Item href="#/paciente">
+                                Registrar Citas
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="#/psicologo">
+                                Registrar Psicologos
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="#/psicologo">
+                                Registrar Pacientes
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="#/psicologo">
+                                Registrar Valoraciones
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="#/psicologo">
+                                Registrar Empleado
+                            </NavDropdown.Item>
                         </NavDropdown>
-                        
+                        <NavDropdown title="Consultas" id="basic-nav-dropdown">
+                            <NavDropdown.Item href="#/consultarcitas">
+                                Consultar Citas
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="#/consultarpsicologos">
+                                Consultar Psicologos
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="#/consultarpacientes">
+                                Consultar Pacientes
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="#/consultarvaloraciones">
+                                Consultar Valoraciones
+                            </NavDropdown.Item>
+                        </NavDropdown>
+                        <Nav.Link href="#/">Salir</Nav.Link>
                     </Nav>
-                                       
                     <Nav>
-                        <Nav.Link
-                            
-                            href="#/User"
-                        ></Nav.Link>
-
                         <NavDropdown title="User" id="basic-nav-dropdown">
                             <NavDropdown.Item href="#/User">
                                 Profile
                             </NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item href="#/login">
-                                Login
-                            </NavDropdown.Item>
-                            <NavDropdown.Item href="#/signin">
-                                Sign Up
-                            </NavDropdown.Item>
-                            
+                                Cerrar Sesión
+                            </NavDropdown.Item>  
                         </NavDropdown>
-                        
                     </Nav>
                 </Navbar.Collapse>
             </Container>

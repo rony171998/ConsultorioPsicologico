@@ -1,21 +1,12 @@
-import React,{useEffect} from 'react';
-import { Card, Table } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
-import { getMyCitas } from '../store/slices/cita.slice';
+import React from "react";
+import { Card, Table } from "react-bootstrap";
 
-const ListDate = () => {
-    const dispatch = useDispatch();
-    let dates = useSelector(state => state.cita);
-
-    useEffect(() => {
-        dispatch(getMyCitas());
-    }, [dispatch]);
-
+const TableDates = ({ dates }) => {
     return (
         <div>
-            <Card className=''>
+            <Card className="my-2 text-center">
                 <Card.Header>
-                    <Card.Title>Mis citas</Card.Title>
+                    <Card.Title>Citas</Card.Title>
                 </Card.Header>
                 <Card.Body>
                     <Table striped bordered hover>
@@ -24,6 +15,8 @@ const ListDate = () => {
                                 <th>Fecha</th>
                                 <th>Hora</th>
                                 <th>Estado</th>
+                                <th>Paciente</th>
+                                <th>Psicologo</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -32,16 +25,24 @@ const ListDate = () => {
                                     <td>{date.fecha}</td>
                                     <td>{date.hora}</td>
                                     <td>{date.estado}</td>
+                                    <td>
+                                        {date.paciente.name +
+                                            " " +
+                                            date.paciente.apellidos}
+                                    </td>
+                                    <td>
+                                        {date.psicologo.name +
+                                            " " +
+                                            date.psicologo.apellidos}
+                                    </td>
                                 </tr>
-                            ))}                           
+                            ))}
                         </tbody>
                     </Table>
-
                 </Card.Body>
-
             </Card>
         </div>
     );
 };
 
-export default ListDate;
+export default TableDates;

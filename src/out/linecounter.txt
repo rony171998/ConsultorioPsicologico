@@ -1,0 +1,52 @@
+===============================================================================
+EXTENSION NAME : linecounter
+EXTENSION VERSION : 0.2.7
+-------------------------------------------------------------------------------
+count time : 2022-11-07 20:16:01
+count workspace : c:\Users\Rony\Desktop\Rony\Academlo\FullStack\ConsultorioPsicologico\client\src
+total files : 32
+total code lines : 1535
+total comment lines : 11
+total blank lines : 309
+
+    statistics
+   |      extension|     total code|  total comment|    total blank|percent|
+   -------------------------------------------------------------------------
+   |            .js|            241|              7|             40|     16|
+   |           .jsx|           1183|              4|            261|     77|
+   |           .svg|              1|              0|              0|  0.065|
+   |           .css|            110|              0|              8|    7.2|
+   -------------------------------------------------------------------------
+App.css, code is 33, comment is 0, blank is 6.
+App.js, code is 35, comment is 0, blank is 4.
+components\Calendar.jsx, code is 8, comment is 0, blank is 3.
+components\Footer.jsx, code is 54, comment is 0, blank is 16.
+components\FormLogin.jsx, code is 63, comment is 0, blank is 18.
+components\index.jsx, code is 11, comment is 0, blank is 3.
+components\ListDate.jsx, code is 42, comment is 0, blank is 8.
+components\loadingScreen\loading-screen.css, code is 65, comment is 0, blank is 1.
+components\loadingScreen\LoadingScreen.js, code is 10, comment is 0, blank is 2.
+components\NavBar.jsx, code is 43, comment is 0, blank is 9.
+components\ProtectedRoutes.jsx, code is 10, comment is 4, blank is 3.
+components\RegisterValoration.jsx, code is 155, comment is 0, blank is 36.
+components\RestApiModal.jsx, code is 10, comment is 0, blank is 3.
+components\SignInCita.jsx, code is 107, comment is 0, blank is 20.
+components\SignInPaciente.jsx, code is 189, comment is 0, blank is 41.
+components\SignInPsicologo.jsx, code is 237, comment is 0, blank is 38.
+index.css, code is 12, comment is 0, blank is 1.
+index.js, code is 12, comment is 3, blank is 2.
+logo.svg, code is 1, comment is 0, blank is 0.
+pages\Home.jsx, code is 9, comment is 0, blank is 3.
+pages\index.jsx, code is 6, comment is 0, blank is 0.
+pages\Login.jsx, code is 22, comment is 0, blank is 5.
+pages\P404.jsx, code is 184, comment is 0, blank is 45.
+pages\Paciente.jsx, code is 11, comment is 0, blank is 3.
+pages\Psicologo.jsx, code is 12, comment is 0, blank is 5.
+pages\Signin.jsx, code is 10, comment is 0, blank is 2.
+reportWebVitals.js, code is 12, comment is 0, blank is 1.
+setupTests.js, code is 1, comment is 4, blank is 0.
+store\index.js, code is 9, comment is 0, blank is 1.
+store\slices\isLoading.slice.js, code is 18, comment is 0, blank is 4.
+store\slices\paciente.slice.js, code is 72, comment is 0, blank is 13.
+store\slices\psicologo.slice.js, code is 72, comment is 0, blank is 13.
+===============================================================================

@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { swal } from '../../components/swal';
 import { setIsLoading } from './isLoading.slice';
 
 export const pacienteSlice = createSlice({
@@ -12,7 +13,7 @@ export const pacienteSlice = createSlice({
         }
     }
 })
-export const { setPaciente  } = pacienteSlice.actions;
+export const { setPaciente  } = pacienteSlice.actions;        
 
 export const getPacientes = () => (dispatch) => {
     dispatch(setIsLoading(true));
@@ -36,7 +37,6 @@ export const login = (email, password) => (dispatch) => {
     dispatch(setIsLoading(true));
     return axios.post('/paciente/login', { email, password })
         .then(res => {
-            dispatch(setPaciente(res.data));
             localStorage.setItem('token', res.data.token);
             localStorage.setItem('paciente', JSON.stringify(res.data.paciente));
         })
@@ -47,24 +47,24 @@ export const login = (email, password) => (dispatch) => {
 export const registerPaciente = (data) => (dispatch) => {
     dispatch(setIsLoading(true));
     return axios.post('/paciente/', data )
-        .then(res => dispatch(setPaciente(res.data)))
-        .catch(err => console.log(err))
+        .then(res => swal('success', res.statusText , "success"))
+        .catch(err => swal('error', err.response.data.message , "error"))
         .finally(() => dispatch(setIsLoading(false)));
 }
 
 export const updatePaciente = (id, data) => (dispatch) => {
     dispatch(setIsLoading(true));
     return axios.put(`/paciente/${id}`, data)
-        .then(res => dispatch(setPaciente(res.data)))
-        .catch(err => console.log(err))
+        .then(res => swal('success', res.statusText , "success"))
+        .catch(err => swal('error', err.response.data.message , "error"))
         .finally(() => dispatch(setIsLoading(false)));
 }
 
 export const deletePaciente = (id) => (dispatch) => {
     dispatch(setIsLoading(true));
     return axios.delete(`/paciente/${id}`)
-        .then(res => dispatch(setPaciente(res.data)))
-        .catch(err => console.log(err))
+        .then(res => swal('success', res.statusText , "success"))
+        .catch(err => swal('error', err.response.data.message , "error"))
         .finally(() => dispatch(setIsLoading(false)));
 }
 

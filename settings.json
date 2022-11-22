@@ -1,0 +1,15 @@
+{
+    //jest configuration
+    "jest.jestCommandLine": "npm run test --",
+    "jest.autoRun": {
+        "watch": true,
+        "onStartup": "all-tests",
+        "onSave": "test-src-file"
+    },
+    "jest.coverageColors": {
+        "uncovered": "rgba(255, 0, 0, 0.5)",
+        "partiallyCovered": "rgba(255, 255, 0, 0.5)",
+    },
+    "jest.coverageFormatter": "GutterFormatter",
+    "editor.renderWhitespace": "none"
+}

@@ -1,23 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Card, Col, Form, InputGroup, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { RestApiModal } from ".";
 
 const RegisterValoration = () => {
-
     const { register, handleSubmit, reset } = useForm()
-    const [show, setShow] = useState(false);
-    const navigate = useNavigate();
 
     const submit = data => {
-        console.log(data);
-        setShow(true);
+        console.log(data);        
         reset();
-
     };
-    const handleClose = () => setShow(false);
-
+    
     return (
 
         <Card className="my-5 text-center">
@@ -179,8 +171,6 @@ const RegisterValoration = () => {
                     <Button variant="primary" type="submit" className="mx-1">
                         Registrar
                     </Button>
-
-                    <RestApiModal show={show} handleClose={handleClose} />
 
                 </Form>
             </Card.Body>

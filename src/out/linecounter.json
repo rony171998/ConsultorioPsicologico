@@ -1,0 +1,231 @@
+{
+    "extension": "linecounter",
+    "version": "0.2.7",
+    "workspace": "c:\\Users\\Rony\\Desktop\\Rony\\Academlo\\FullStack\\ConsultorioPsicologico\\client\\src",
+    "linecount": [
+        {
+            "version": "0.2.7",
+            "counttime": "2022-11-07 20:16:01",
+            "filesum": 32,
+            "codesum": 1535,
+            "commentsum": 11,
+            "blanksum": 309,
+            "statistics": {
+                ".js": {
+                    "code": 241,
+                    "comment": 7,
+                    "blank": 40
+                },
+                ".jsx": {
+                    "code": 1183,
+                    "comment": 4,
+                    "blank": 261
+                },
+                ".svg": {
+                    "code": 1,
+                    "comment": 0,
+                    "blank": 0
+                },
+                ".css": {
+                    "code": 110,
+                    "comment": 0,
+                    "blank": 8
+                }
+            },
+            "filelist": [
+                {
+                    "blank": 6,
+                    "code": 33,
+                    "comment": 0,
+                    "filename": "App.css"
+                },
+                {
+                    "blank": 4,
+                    "code": 35,
+                    "comment": 0,
+                    "filename": "App.js"
+                },
+                {
+                    "blank": 3,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "components\\Calendar.jsx"
+                },
+                {
+                    "blank": 16,
+                    "code": 54,
+                    "comment": 0,
+                    "filename": "components\\Footer.jsx"
+                },
+                {
+                    "blank": 18,
+                    "code": 63,
+                    "comment": 0,
+                    "filename": "components\\FormLogin.jsx"
+                },
+                {
+                    "blank": 3,
+                    "code": 11,
+                    "comment": 0,
+                    "filename": "components\\index.jsx"
+                },
+                {
+                    "blank": 8,
+                    "code": 42,
+                    "comment": 0,
+                    "filename": "components\\ListDate.jsx"
+                },
+                {
+                    "blank": 1,
+                    "code": 65,
+                    "comment": 0,
+                    "filename": "components\\loadingScreen\\loading-screen.css"
+                },
+                {
+                    "blank": 2,
+                    "code": 10,
+                    "comment": 0,
+                    "filename": "components\\loadingScreen\\LoadingScreen.js"
+                },
+                {
+                    "blank": 9,
+                    "code": 43,
+                    "comment": 0,
+                    "filename": "components\\NavBar.jsx"
+                },
+                {
+                    "blank": 3,
+                    "code": 10,
+                    "comment": 4,
+                    "filename": "components\\ProtectedRoutes.jsx"
+                },
+                {
+                    "blank": 36,
+                    "code": 155,
+                    "comment": 0,
+                    "filename": "components\\RegisterValoration.jsx"
+                },
+                {
+                    "blank": 3,
+                    "code": 10,
+                    "comment": 0,
+                    "filename": "components\\RestApiModal.jsx"
+                },
+                {
+                    "blank": 20,
+                    "code": 107,
+                    "comment": 0,
+                    "filename": "components\\SignInCita.jsx"
+                },
+                {
+                    "blank": 41,
+                    "code": 189,
+                    "comment": 0,
+                    "filename": "components\\SignInPaciente.jsx"
+                },
+                {
+                    "blank": 38,
+                    "code": 237,
+                    "comment": 0,
+                    "filename": "components\\SignInPsicologo.jsx"
+                },
+                {
+                    "blank": 1,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "index.css"
+                },
+                {
+                    "blank": 2,
+                    "code": 12,
+                    "comment": 3,
+                    "filename": "index.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "logo.svg"
+                },
+                {
+                    "blank": 3,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "pages\\Home.jsx"
+                },
+                {
+                    "blank": 0,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": "pages\\index.jsx"
+                },
+                {
+                    "blank": 5,
+                    "code": 22,
+                    "comment": 0,
+                    "filename": "pages\\Login.jsx"
+                },
+                {
+                    "blank": 45,
+                    "code": 184,
+                    "comment": 0,
+                    "filename": "pages\\P404.jsx"
+                },
+                {
+                    "blank": 3,
+                    "code": 11,
+                    "comment": 0,
+                    "filename": "pages\\Paciente.jsx"
+                },
+                {
+                    "blank": 5,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "pages\\Psicologo.jsx"
+                },
+                {
+                    "blank": 2,
+                    "code": 10,
+                    "comment": 0,
+                    "filename": "pages\\Signin.jsx"
+                },
+                {
+                    "blank": 1,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "reportWebVitals.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 4,
+                    "filename": "setupTests.js"
+                },
+                {
+                    "blank": 1,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "store\\index.js"
+                },
+                {
+                    "blank": 4,
+                    "code": 18,
+                    "comment": 0,
+                    "filename": "store\\slices\\isLoading.slice.js"
+                },
+                {
+                    "blank": 13,
+                    "code": 72,
+                    "comment": 0,
+                    "filename": "store\\slices\\paciente.slice.js"
+                },
+                {
+                    "blank": 13,
+                    "code": 72,
+                    "comment": 0,
+                    "filename": "store\\slices\\psicologo.slice.js"
+                }
+            ]
+        }
+    ]
+}

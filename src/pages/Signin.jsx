@@ -1,11 +1,10 @@
 import React from 'react';
-import { SignInPaciente } from '../components';
+import { SignInPaciente, SignInPsicologo } from '../components';
 
-const Paciente = () => {
+const Paciente = ({rol}) => {
     return (
         <div>
-            <SignInPaciente/>
-            
+            {rol === 'paciente' ? <SignInPaciente /> : <SignInPsicologo />}                      
         </div>
     );
 };

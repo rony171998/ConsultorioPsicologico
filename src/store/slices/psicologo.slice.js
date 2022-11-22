@@ -16,9 +16,8 @@ export const { setPsicologo  } = psicologoSlice.actions;
 
 export const getPsicologos = () => (dispatch) => {
     dispatch(setIsLoading(true));
-    
-    return axios.get(`/psicologo`)
-        .then(res =>dispatch(setPsicologo(res.data)))
+    return axios.get('psicologo')
+        .then(res => dispatch(setPsicologo(res.data.psicologos)))
         .catch(err => console.log(err))
         .finally(() => dispatch(setIsLoading(false)));
 }
@@ -26,7 +25,7 @@ export const getPsicologos = () => (dispatch) => {
 export const getPsicologo = (id) => (dispatch) => {
     dispatch(setIsLoading(true));
     
-    return axios.get(`/psicologo ${id}`)
+    return axios.get(`/psicologo/ ${id}`)
         .then(res =>dispatch(setPsicologo(res.data)))
         .catch(err => console.log(err))
         .finally(() => dispatch(setIsLoading(false)));

@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Card, Col, Form, InputGroup, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from 'yup'
-import RestApiModal from "./RestApiModal";
 import { registerPaciente } from "../store/slices/paciente.slice";
 
 const SignInPaciente = () => {
@@ -35,24 +34,21 @@ const SignInPaciente = () => {
         areaEspecializacion: Yup.string()
             .max(20, 'El Area de Especializacion es de maximo 20 caracteres')
             .matches(/^[a-zA-Z]+$/, 'El area psicológica solo puede contener letras'),
-
     });
+
     const formOptions = { resolver: yupResolver(formSchema) }
     const { register, handleSubmit, reset, formState } = useForm(formOptions)
     const { errors } = formState
-    const [show, setShow] = useState(false);
 
     const submit = data => {
         console.log(data)
         registerPaciente(data)
-        setShow(true);
         reset();
 
     };
-    const handleClose = () => setShow(false);
 
     return (
-        
+
         <Card className="mt-3 text-center">
             <Card.Header className="">
                 <Card.Title>Registro de Paciente</Card.Title>
@@ -60,7 +56,7 @@ const SignInPaciente = () => {
             <Card.Body>
                 <Form onSubmit={handleSubmit(submit)}>
                     <Row>
-                    <Col>
+                        <Col>
                             <InputGroup className="mb-2">
 
                                 <Form.Control
@@ -81,9 +77,7 @@ const SignInPaciente = () => {
 
                             <Form.Group
                                 className="mb-2"
-                                
                             >
-
                                 <Form.Select {...register("sexo")} required>
                                     <option value="">Sexo</option>
                                     <option value="M">Masculino</option>
@@ -93,7 +87,7 @@ const SignInPaciente = () => {
                             </Form.Group>
                             <Form.Group
                                 className="mb-2"
-                                
+
                             >
 
                                 <Form.Select {...register("EPS")} required>
@@ -106,21 +100,21 @@ const SignInPaciente = () => {
 
                             <Form.Group
                                 className="mb-2"
-                                
+
                             >
 
                                 <Form.Select {...register("ocupacion")} required>
                                     <option value="">Ocupacion</option>
                                     <option value="M">Estudiante</option>
                                     <option value="F">Profesional</option>
-                                   
+
 
                                 </Form.Select>
                             </Form.Group>
 
                             <Form.Group
                                 className="mb-2"
-                                
+
                             >
 
                                 <Form.Control
@@ -134,7 +128,7 @@ const SignInPaciente = () => {
                             </Form.Group>
                             <Form.Group
                                 className="mb-2"
-                                
+
                             >
                                 <Form.Control
                                     {...register("direccion")}
@@ -147,7 +141,7 @@ const SignInPaciente = () => {
 
                             <Form.Group
                                 className="mb-2"
-                                
+
                             >
                                 <Form.Control
                                     {...register("fechaNacimiento")}
@@ -209,7 +203,7 @@ const SignInPaciente = () => {
                                 <div className="invalid-feedback">{errors.confirmarContraseña?.message}</div>
                             </Form.Group>
                         </Col>
-                        
+
                     </Row>
                     <Button variant="danger" className="mx-1" >
                         Cancelar
@@ -218,8 +212,6 @@ const SignInPaciente = () => {
                     <Button variant="primary" type="submit" className="mx-1">
                         Registrar
                     </Button>
-
-                    <RestApiModal show={show} handleClose={handleClose} />
 
                 </Form>
             </Card.Body>

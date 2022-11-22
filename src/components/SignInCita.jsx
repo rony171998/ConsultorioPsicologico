@@ -1,83 +1,106 @@
-import React, { useState } from "react";
-import { Button, Card, Col, Form, InputGroup, Row } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import { Button, Card, Col, Form, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import RestApiModal from "./RestApiModal";
+import { useDispatch } from "react-redux";
+import { createMeCita } from "../store/slices/cita.slice";
 
 const SignInCita = () => {
-    const { register, handleSubmit, reset} = useForm()
-    const [show, setShow] = useState(false);
-    const navigate = useNavigate();
-
+    const { register, handleSubmit, reset } = useForm();
+    const [psicologos, setPsicologos] = useState([]);
+    const dispatch = useDispatch();
     const submit = data => {
-        console.log(data);
-        setShow(true);
+        dispatch(createMeCita(data));
         reset();
-
     };
-    const handleClose = () => setShow(false);
+
+    useEffect(() => {
+        fetch("http://localhost:4000/api/v1/psicologo")
+            .then(res => res.json())
+            .then(data => setPsicologos(data.psicologos))
+            .catch(err => console.log(err));
+    }, []);
 
     return (
-        <Card className="mt-3 text-center">
+        <Card className="text-center">
             <Card.Header className="">
                 <Card.Title>Registro de Citas</Card.Title>
             </Card.Header>
             <Card.Body>
                 <Form onSubmit={handleSubmit(submit)}>
                     <Row>
-                    <Col>
-                            <InputGroup className="mb-2">
-                                <Form.Select {...register("tipoDocumento")} required>
-                                    <option value="">Tipo de Documento</option>
-                                    <option value="1">Cedula de Ciudadania</option>
-                                    <option value="2">Cedula de Extranjeria</option>
-                                    <option value="3">Pasaporte</option>
-
-                                </Form.Select>
-                                <Form.Control
-                                    {...register("identificacion")}
-                                    type="number"
-                                    placeholder="Identificacion"
+                        <Col>
+                            <Form.Group
+                                className="mb-2"
+                                controlId="formBasicPsicologo_id"
+                            >
+                                <Form.Select
+                                    {...register("psicologo_id")}
                                     required
-                                />
-                            </InputGroup>
-                            <Form.Group>
-                                <Form.Select {...register("Psicologo")} required>
-                                    <option value="">Psicologo</option>
-                                    <option value="1">Juan Perez</option>
-                                    <option value="2">Maria Lopez</option>
-                                    <option value="3">Pedro Martinez</option>
-
+                                >
+                                    <option value="">
+                                        Selecione un Psicologo
+                                    </option>
+                                    {psicologos.map(psicologo => (
+                                        <option
+                                            key={psicologo.id}
+                                            value={psicologo.id}
+                                        >
+                                            {psicologo.name +
+                                                " " +
+                                                psicologo.apellidos}
+                                        </option>
+                                    ))}
                                 </Form.Select>
                             </Form.Group>
                             <Form.Group
                                 className="mb-2"
-                                controlId="formBasicfechaNacimiento"
-                            >   
+                                controlId="formBasicfecha"
+                            >
                                 <Form.Label>Fecha de Cita</Form.Label>
                                 <Form.Control
-                                    {...register("fechaNacimiento")}
-                                    type="datetime-local"
-                                    placeholder="Fecha de Nacimiento"
+                                    {...register("fecha")}
+                                    type="date"
+                                    placeholder="Fecha de la cita"
                                     min={new Date().toISOString().split("T")[0]}
-                                    max="2022-12-31 17:00"
+                                    max="2022-12-31"
                                     required
-
                                 />
-                            </Form.Group>                           
-                            
+                            </Form.Group>
+
+                            <Form.Group
+                                className="mb-2"
+                                controlId="formBasichora"
+                            >
+                                <Form.Label>Hora de Cita</Form.Label>
+                                <Form.Control
+                                    {...register("hora")}
+                                    type="time"
+                                    placeholder="Hora de la cita"
+                                    min="07:00"
+                                    max="17:00"
+                                    pattern="[0-9]{2}:[0-9]{2}"
+                                    required
+                                />
+                            </Form.Group>
+
+                            <Form.Group
+                                className="mb-2"
+                                controlId="formBasicmotivo"
+                            >
+                                <Form.Label>Motivo de Cita</Form.Label>
+                                <Form.Control
+                                    {...register("motivo")}
+                                    type="text"
+                                    placeholder="Motivo de la cita"
+                                    required
+                                />
+                            </Form.Group>
                         </Col>
-                        
                     </Row>
-                    <Button variant="danger" className="mx-1" onClick={navigate("/")}>
-                        Cancelar
-                    </Button>
 
                     <Button variant="primary" type="submit" className="mx-1">
                         Registrar
                     </Button>
-                    <RestApiModal show={show} handleClose={handleClose} />
-
                 </Form>
             </Card.Body>
         </Card>
