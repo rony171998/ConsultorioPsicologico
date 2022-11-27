@@ -10,7 +10,7 @@ const ListDate = () => {
     useEffect(() => {
         dispatch(getMyCitas());
     }, [dispatch]);
-
+    
     return (
         <div>
             <Card className=''>
@@ -24,6 +24,7 @@ const ListDate = () => {
                                 <th>Fecha</th>
                                 <th>Hora</th>
                                 <th>Estado</th>
+                                <th>Psicologo</th>                               
                             </tr>
                         </thead>
                         <tbody>
@@ -32,6 +33,7 @@ const ListDate = () => {
                                     <td>{date.fecha}</td>
                                     <td>{date.hora}</td>
                                     <td>{date.estado}</td>
+                                    <td>{date.psicologo.name+ " "+ date.psicologo.apellidos}</td>
                                 </tr>
                             ))}                           
                         </tbody>
