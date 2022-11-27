@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import TableDates from "../components/moleculas/TableDates";
+import TableDates from "../components/atoms/TableDates";
 import { getCitas } from "../store/slices/cita.slice";
 
 const ConsultarCitas = () => {

@@ -3,49 +3,49 @@ import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 
 const NavBar = () => {
     return (
-        <Navbar bg="primary" expand="lg">
+        <Navbar bg="primary" className="navbar-dark" expand="lg">
             <Container>
                 <Navbar.Brand href="/"> VitalMente </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="navbarColor02">
+                <Navbar.Collapse className="text-white" id="navbarColor02">
                     <Nav className="me-auto">
-                        <Nav.Link href="#/">Home</Nav.Link>
+                        <Nav.Link href="/#/">Home</Nav.Link>
                         <NavDropdown title="Registrar" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="#/paciente">
-                                Registrar Citas
+                            <NavDropdown.Item href="#/signup-cita">
+                                Registrar Cita
                             </NavDropdown.Item>
-                            <NavDropdown.Item href="#/psicologo">
-                                Registrar Psicologos
+                            <NavDropdown.Item href="#/signup-paciente">
+                                Registrar Paciente
                             </NavDropdown.Item>
-                            <NavDropdown.Item href="#/psicologo">
-                                Registrar Pacientes
+                            <NavDropdown.Item href="#/signup-psicologo">
+                                Registrar Psicologo
                             </NavDropdown.Item>
-                            <NavDropdown.Item href="#/psicologo">
-                                Registrar Valoraciones
+                            <NavDropdown.Item href="#/signup-valoracion">
+                                Registrar Valoracion
                             </NavDropdown.Item>
-                            <NavDropdown.Item href="#/psicologo">
+                            <NavDropdown.Item href="#/signup-empleado">
                                 Registrar Empleado
                             </NavDropdown.Item>
                         </NavDropdown>
                         <NavDropdown title="Consultas" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="#/consultarcitas">
+                            <NavDropdown.Item href="/consultar-citas">
                                 Consultar Citas
                             </NavDropdown.Item>
-                            <NavDropdown.Item href="#/consultarpsicologos">
+                            <NavDropdown.Item href="/#/consultar-psicologos">
                                 Consultar Psicologos
                             </NavDropdown.Item>
-                            <NavDropdown.Item href="#/consultarpacientes">
+                            <NavDropdown.Item href="/#/consultar-pacientes">
                                 Consultar Pacientes
                             </NavDropdown.Item>
-                            <NavDropdown.Item href="#/consultarvaloraciones">
+                            <NavDropdown.Item href="/#/consultar-valoraciones">
                                 Consultar Valoraciones
                             </NavDropdown.Item>
                         </NavDropdown>
-                        <Nav.Link href="#/">Salir</Nav.Link>
+                        <Nav.Link href="#/login">Salir</Nav.Link>
                     </Nav>
                     <Nav>
                         <NavDropdown title="User" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="#/User">
+                            <NavDropdown.Item href="#/user">
                                 Profile
                             </NavDropdown.Item>
                             <NavDropdown.Divider />

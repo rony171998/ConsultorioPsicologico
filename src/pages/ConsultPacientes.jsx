@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import TablePacientes from "../components/moleculas/TablePacientes";
+import TablePacientes from "../components/atoms/TablePacientes";
 
 const ConsultarPacientes = () => {
     const [pacientes, setPacientes] = useState([]);
@@ -10,7 +10,7 @@ const ConsultarPacientes = () => {
             .then(data => setPacientes(data.pacientes))
             .catch(err => console.log(err));
     }, []);
-
+    
     return (
         <div>
             <TablePacientes dates={pacientes} />

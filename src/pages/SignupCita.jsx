@@ -1,7 +1,7 @@
 import React from 'react';
-import { SignInPaciente, SignInPsicologo } from '../components';
+import { SignInCita } from '../components';
 
-const Paciente = ({ rol }) => {
+export default function SignupCita () {
     return (
         <div>
             <section className="text-center">
@@ -19,8 +19,8 @@ const Paciente = ({ rol }) => {
 
                         <div className="row d-flex justify-content-center">
                             <div className="col-lg-8">
-                                <h2 className="fw-bold mb-5">Sign up {rol}</h2>
-                                {rol === 'paciente' ? <SignInPaciente /> : <SignInPsicologo />}
+                                <h2 className="fw-bold mb-5">Signup Cita</h2>
+                                <SignInCita />
                             </div>
                         </div>
                     </div>
@@ -29,5 +29,3 @@ const Paciente = ({ rol }) => {
         </div>
     );
 };
-
-export default Paciente;

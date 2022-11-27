@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { setIsLoading } from './isLoading.slice';
+import { swal } from '../../components/swal';
 
 export const psicologoSlice = createSlice({
     
@@ -46,7 +47,7 @@ export const login = (email, password) => (dispatch) => {
 export const registerPsicologo = (data) => (dispatch) => {
     dispatch(setIsLoading(true));
     return axios.post('/psicologo/', data )
-        .then(res => dispatch(setPsicologo(res.data)))
+        .then(res => swal('success', res.statusText , "success"))
         .catch(err => console.log(err))
         .finally(() => dispatch(setIsLoading(false)));
 }
@@ -78,7 +79,5 @@ export const logout = () => (dispatch) => {
         .catch(err => console.log(err))
         .finally(() => dispatch(setIsLoading(false)));
 }
-
-export const selectPsicologo = (state) => state.psicologo;
 
 export default psicologoSlice.reducer;

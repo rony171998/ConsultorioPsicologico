@@ -17,7 +17,6 @@ export const { setPaciente  } = pacienteSlice.actions;
 
 export const getPacientes = () => (dispatch) => {
     dispatch(setIsLoading(true));
-    
     return axios.get(`/paciente`)
         .then(res =>dispatch(setPaciente(res.data)))
         .catch(err => console.log(err))
@@ -26,7 +25,6 @@ export const getPacientes = () => (dispatch) => {
 
 export const getPaciente = (id) => (dispatch) => {
     dispatch(setIsLoading(true));
-    
     return axios.get(`/paciente ${id}`)
         .then(res =>dispatch(setPaciente(res.data)))
         .catch(err => console.log(err))
@@ -47,8 +45,8 @@ export const login = (email, password) => (dispatch) => {
 export const registerPaciente = (data) => (dispatch) => {
     dispatch(setIsLoading(true));
     return axios.post('/paciente/', data )
-        .then(res => swal('success', res.statusText , "success"))
-        .catch(err => swal('error', err.response.data.message , "error"))
+        .then(res => swal('Registro exitoso',res.statusText, 'success'))
+        .catch(err => console.log(err))
         .finally(() => dispatch(setIsLoading(false)));
 }
 
@@ -79,7 +77,5 @@ export const logout = () => (dispatch) => {
         .catch(err => console.log(err))
         .finally(() => dispatch(setIsLoading(false)));
 }
-
-export const selectPaciente = (state) => state.paciente;
 
 export default pacienteSlice.reducer;

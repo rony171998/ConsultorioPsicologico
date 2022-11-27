@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import TablePsicologos from "../components/moleculas/TablePsicologos";
+import TablePsicologos from "../components/atoms/TablePsicologos";
 
 const ConsultarPsicologos = () => {
     const [psicologos, setPsicologos] = useState([]);

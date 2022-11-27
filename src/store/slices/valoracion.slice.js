@@ -3,57 +3,57 @@ import axios from 'axios';
 import { swal } from '../../components/swal';
 import { setIsLoading } from './isLoading.slice';
 
-export const citaSlice = createSlice({
-    name: 'cita',
+export const valoracionSlice = createSlice({
+    name: 'valoracion',
     initialState: [],
     reducers: {
-        setCita: (state, action) => {
+        setValoracion: (state, action) => {
             return action.payload
         }
     }
 })
-export const { setCita  } = citaSlice.actions;        
+export const { setValoracion  } = valoracionSlice.actions;        
 
 const getConfig = () => ({
     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
 });
 
-export const getCitas = () => (dispatch) => {
+export const getValoraciones = () => (dispatch) => {
     dispatch(setIsLoading(true));
-    return axios.get(`/cita`)
-        .then(res =>dispatch(setCita(res.data.citas)))
+    return axios.get(`/valoracion`)
+        .then(res =>dispatch(setValoracion(res.data.valoracions)))
         .catch(err => console.log(err))
         .finally(() => dispatch(setIsLoading(false)));
 }
 
-export const getMyCitas = () => (dispatch) => {
+export const getMyValoraciones = () => (dispatch) => {
     dispatch(setIsLoading(true));
-    return axios.get(`/cita/me`, getConfig())
-        .then(res =>dispatch(setCita(res.data.citas)))
+    return axios.get(`/valoracion/me`, getConfig())
+        .then(res =>dispatch(setValoracion(res.data.valoracions)))
         .catch(err => console.log(err))
         .finally(() => dispatch(setIsLoading(false)));
 }
 
-export const createMeCita = (data) => (dispatch) => {
+export const createMeValoracion = (data) => (dispatch) => {
     dispatch(setIsLoading(true));
-    return axios.post('/cita/me', data , getConfig())
+    return axios.post('/valoracion/me', data , getConfig())
         .then(res => {
             swal( "success" , res.statusText , "success")
-            dispatch(getCitas());
+            dispatch(getValoraciones());
         })
         .catch(err => swal( "error" , err.response.statusText , "error"))
         .finally(() => dispatch(setIsLoading(false)));              
 }
 
-export const createCita = (data) => (dispatch) => {
+export const createValoracion = (data) => (dispatch) => {
     dispatch(setIsLoading(true));
-    return axios.post('/cita', data)
+    return axios.post('/valoracion', data , getConfig())
         .then(res => {
             swal( "success" , res.statusText , "success")
-            dispatch(getCitas());
+            dispatch(getValoraciones());
         })
-        .catch(err => swal( "error" , err.response.statusText , "error"))
+        .catch(err => console.log(err))
         .finally(() => dispatch(setIsLoading(false)));              
 }
 
-export default citaSlice.reducer;
+export default valoracionSlice.reducer;

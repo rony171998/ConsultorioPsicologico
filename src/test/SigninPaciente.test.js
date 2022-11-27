@@ -3,10 +3,19 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { server } from "../mocks/server";
 import { rest } from "msw";
+import { HashRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "../store";
 
 describe("SignInPaciente", () => {
     it("should render the component", () => {
-        render(<SignInPaciente />);
+        render(
+            <Provider store={store}>
+                <HashRouter>
+                    <SignInPaciente />
+                </HashRouter>
+            </Provider>
+        );
 
         server.use(
             rest.post(

@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Button, Card, Form, InputGroup, } from "react-bootstrap";
+import { Button, Card,  Form, } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { createCita } from "../store/slices/cita.slice";
+import { createMeCita } from "../store/slices/cita.slice";
 
 const SignInCita = () => {
     const { register, handleSubmit, reset } = useForm();
     const [psicologos, setPsicologos] = useState([]);
     const dispatch = useDispatch();
     const submit = data => {
-        dispatch(createCita(data));
+        dispatch(createMeCita(data));
         reset();
     };
 
@@ -24,27 +24,6 @@ const SignInCita = () => {
         <div className="text-center">
             <Card.Body className="px-5">
                 <Form onSubmit={handleSubmit(submit)}>
-                    <InputGroup className="mb-2">
-                        <Form.Select
-                            {...register("TipoDocumento")}
-                            required
-                        >
-                            <option value="">Tipo de Documento</option>
-                            <option value="1">
-                                Cedula de Ciudadania
-                            </option>
-                            <option value="2">
-                                Cedula de Extranjeria
-                            </option>
-                            <option value="3">Pasaporte</option>
-                        </Form.Select>
-                        <Form.Control
-                            {...register("paciente_id")}
-                            type="number"
-                            placeholder="Numero de Identificacion"
-                            required
-                        />
-                    </InputGroup>
                     <Form.Group
                         className="mb-2"
                         controlId="formBasicPsicologo_id"

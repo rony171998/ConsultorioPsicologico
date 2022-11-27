@@ -1,10 +1,10 @@
 import React from 'react';
-import { SignInPaciente, SignInPsicologo } from '../components';
+import { SignInPsicologo } from '../components';
 
-const Paciente = ({ rol }) => {
+export default function SignupPsicologo () {
     return (
         <div>
-            <section className="text-center">
+            <section className="">
                 <div className="p-5 bg-image d-block" style={{
                     backgroundImage: "url('https://mdbootstrap.com/img/new/textures/full/171.jpg')",
                     height: "200px"
@@ -15,12 +15,12 @@ const Paciente = ({ rol }) => {
                     background: "hsla(0, 0%, 100%, 0.8)",
                     backdropFilter: "blur(30px)"
                 }}>
-                    <div className="card-body py-5 px-md-5">
+                    <div className="card-body py-3 px-md-5">
 
                         <div className="row d-flex justify-content-center">
-                            <div className="col-lg-8">
-                                <h2 className="fw-bold mb-5">Sign up {rol}</h2>
-                                {rol === 'paciente' ? <SignInPaciente /> : <SignInPsicologo />}
+                            <div className="col-lg-10">
+                                <h2 className="fw-bold mb-5 text-center">Signup Psicologo</h2>
+                                <SignInPsicologo />
                             </div>
                         </div>
                     </div>
@@ -29,5 +29,3 @@ const Paciente = ({ rol }) => {
         </div>
     );
 };
-
-export default Paciente;

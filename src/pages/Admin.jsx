@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { SignInCita } from "../components";
-import TableDates from "../components/moleculas/TableDates";
-import TablePsicologos from "../components/moleculas/TablePsicologos";
-import TablePacientes from "../components/moleculas/TablePacientes";
+import TableDates from "../components/atoms/TableDates";
+import TablePsicologos from "../components/atoms/TablePsicologos";
+import TablePacientes from "../components/atoms/TablePacientes";
 import { getCitas } from "../store/slices/cita.slice"; 
 
 const Admin = () => {
