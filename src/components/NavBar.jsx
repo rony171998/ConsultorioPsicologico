@@ -2,6 +2,9 @@ import React from "react";
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 
 const NavBar = () => {
+    const logout = () => {
+        localStorage.removeItem("token");
+    };
     return (
         <Navbar bg="primary" className="navbar-dark" expand="lg">
             <Container>
@@ -9,7 +12,7 @@ const NavBar = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse className="text-white" id="navbarColor02">
                     <Nav className="me-auto">
-                        <Nav.Link href="/#/">Home</Nav.Link>
+                        <Nav.Link href="#/">Home</Nav.Link>
                         <NavDropdown title="Registrar" id="basic-nav-dropdown">
                             <NavDropdown.Item href="#/signup-cita">
                                 Registrar Cita
@@ -41,7 +44,11 @@ const NavBar = () => {
                                 Consultar Valoraciones
                             </NavDropdown.Item>
                         </NavDropdown>
-                        <Nav.Link href="#/login">Salir</Nav.Link>
+                        <Nav.Link
+                            
+                            onClick={() => logout()}>
+                            Salir
+                        </Nav.Link>
                     </Nav>
                     <Nav>
                         <NavDropdown title="User" id="basic-nav-dropdown">
@@ -49,9 +56,11 @@ const NavBar = () => {
                                 Profile
                             </NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item href="#/login">
+                            <NavDropdown.Item
+                                
+                                onClick={() => logout()}>
                                 Cerrar Sesión
-                            </NavDropdown.Item>  
+                            </NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>

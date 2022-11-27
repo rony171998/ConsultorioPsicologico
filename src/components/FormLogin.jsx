@@ -15,7 +15,6 @@ export const FormLogin = () => {
             .post(`/${data.rol}/login`, data)
             .then(res => {
                 localStorage.setItem("token", res.data.token);
-                alert("Sesión iniciada correctamente");
                 navigate(`/${data.rol}`);
             })
             .catch(error => {
@@ -76,9 +75,8 @@ export const FormLogin = () => {
                     <br />
                     <Form.Label>Don't have an account? </Form.Label>
                     <br />
-                    <a href="#/signinPaciente"> Sign Up Paciente</a>
-                    <br />
-                    <a href="#/signinPsicologo"> Sign Up Psicologo</a>
+                    <a href="#/signup-paciente"> Sign Up</a>
+                    
                 </Form>
             </Card.Body>
         </div>

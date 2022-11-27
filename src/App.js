@@ -19,21 +19,20 @@ function App() {
             <NavBar />
             <Container>
                 <Routes>
-                    <Route
-                        path="/"
-                        element={
-                            <>
-                                <Home />
-                                <Footer />
-                            </>
-                        }
-                    />
-
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/signinPaciente" element={<Signin rol={"paciente"}/>} />
-                    <Route path="/signup-paciente" element={<SignupPaciente />} />
                     
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/signup-paciente" element={<SignupPaciente />} />
+                    <Route path="*" element={<P404 />} />
                     <Route element={<ProtectedRoutes />}>
+                            <Route
+                            path="/"
+                            element={
+                                <>
+                                    <Home />
+                                    <Footer />
+                                </>
+                            }
+                        />
                         <Route path="/paciente" element={<Paciente />} />
                         <Route path="/psicologo" element={<Psicologo />} />
                         <Route path="/admin" element={<Admin />} />
@@ -49,8 +48,6 @@ function App() {
                         <Route path="/signup-valoracion" element={<SignupValoracion />} />
                         <Route path="/signup-empleado" element={<SignupPaciente />} />
                         <Route path="/signin" element={<Signin rol={"psicologo"} />} />                   
-
-                        <Route path="*" element={<P404 />} />
                     </Route>
                 </Routes>
             </Container>
