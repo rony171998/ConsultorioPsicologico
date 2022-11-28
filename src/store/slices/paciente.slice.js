@@ -18,7 +18,7 @@ export const { setPaciente  } = pacienteSlice.actions;
 export const getPacientes = () => (dispatch) => {
     dispatch(setIsLoading(true));
     return axios.get(`/paciente`)
-        .then(res =>dispatch(setPaciente(res.data)))
+        .then(res =>dispatch(setPaciente(res.data.pacientes)))
         .catch(err => console.log(err))
         .finally(() => dispatch(setIsLoading(false)));
 }

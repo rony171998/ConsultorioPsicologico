@@ -6,7 +6,7 @@ const TablePacientes = ({ dates }) => {
         <div>
             <Card className="my-2 text-center">
                 <Card.Header>
-                    <Card.Title>Citas</Card.Title>
+                    <Card.Title>Pacientes</Card.Title>
                 </Card.Header>
                 <Card.Body>
                     <Table striped bordered hover>

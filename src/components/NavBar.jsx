@@ -44,8 +44,7 @@ const NavBar = () => {
                                 Consultar Valoraciones
                             </NavDropdown.Item>
                         </NavDropdown>
-                        <Nav.Link
-                            
+                        <Nav.Link href="#/login"                          
                             onClick={() => logout()}>
                             Salir
                         </Nav.Link>
@@ -57,7 +56,7 @@ const NavBar = () => {
                             </NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item
-                                
+                                href="#/login"
                                 onClick={() => logout()}>
                                 Cerrar Sesión
                             </NavDropdown.Item>

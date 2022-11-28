@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import TablePacientes from "../components/atoms/TablePacientes";
+import { getPacientes } from "../store/slices/paciente.slice";
 
 const ConsultarPacientes = () => {
-    const [pacientes, setPacientes] = useState([]);
+    const dispatch = useDispatch();
+    let pacientes = useSelector(state => state.paciente);
 
     useEffect(() => {
-        fetch("http://localhost:4000/api/v1/paciente")
-            .then(res => res.json())
-            .then(data => setPacientes(data.pacientes))
-            .catch(err => console.log(err));
-    }, []);
+        dispatch(getPacientes());
+    }, [dispatch]);
     
     return (
         <div>

@@ -65,8 +65,8 @@ const SignInPaciente = () => {
                             <Form.Group className="mb-2">
                                 <Form.Select {...register("EPS")} required>
                                     <option value="">EPS</option>
-                                    <option value="M">Sanitas</option>
-                                    <option value="F">Salu Total</option>
+                                    <option value="sanitas">Sanitas</option>
+                                    <option value="salutotal">Salu Total</option>
                                 </Form.Select>
                             </Form.Group>
 
@@ -76,8 +76,8 @@ const SignInPaciente = () => {
                                     required
                                 >
                                     <option value="">Ocupacion</option>
-                                    <option value="M">Estudiante</option>
-                                    <option value="F">Profesional</option>
+                                    <option value="estudiante">Estudiante</option>
+                                    <option value="profecional">Profesional</option>
                                 </Form.Select>
                             </Form.Group>
                             <InputGroup className="mb-2">
