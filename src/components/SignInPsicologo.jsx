@@ -176,7 +176,6 @@ const SignInPsicologo = () => {
                                 />
                             </InputGroup>
 
-
                             <FloatingLabel label="Email"
                                 className="mb-2"
                                 controlId="formBasicemail"
@@ -230,6 +229,21 @@ const SignInPsicologo = () => {
                             </InputGroup>
                         </Col>
                         <Col>
+                            <FloatingLabel
+                                label="Universida de graduacion"
+                                controlId="formBasicuniversidad"
+                            >
+                                <Form.Control
+                                    className={`form-control ${errors.universidadEgreso ? "is-invalid" : ""}`}
+                                    {...register("universidad")}
+                                    type="text"
+                                    placeholder="Universidad de Egreso"
+                                    required
+                                />
+                                <div className="invalid-feedback">
+                                    {errors.universidadEgreso?.message}
+                                </div>
+                            </FloatingLabel>
                             <InputGroup>
                                 <FloatingLabel
                                     label="Fecha finalizacion de estudios"
@@ -246,39 +260,22 @@ const SignInPsicologo = () => {
                                 </FloatingLabel>
                             </InputGroup>
                             <FloatingLabel
-                                label="Meses de experiencia"
-                                controlId="formBasicmesesExperiencia"
+                                label="Area Psicologica"
+                                controlId="formBasicareaPsicologica"
                             >
                                 <Form.Control
-                                    className={`mx-2 form-control ${errors.mesesExperiencia
+                                    className={`form-control ${errors.areaPsicologica
                                         ? "is-invalid"
                                         : ""
                                         }`}
-                                    {...register("mesesExperiencia")}
-                                    type="number"
-                                    placeholder="Meses de Experiencia"
-                                    maxLength="2"
-                                    minLength="0"
-                                    defaultValue="0"
-                                />
-                                <div className="invalid-feedback">
-                                    {errors.mesesExperiencia?.message}
-                                </div>
-                            </FloatingLabel>
-
-                            <FloatingLabel
-                                label="Area Psicologica"
-                                controlId="formBasicuniversidad"
-                            >
-                                <Form.Control
-                                    className={`form-control ${errors.universidadEgreso ? "is-invalid" : ""}`}
-                                    {...register("universidad")}
+                                    {...register("areaPsicologica")}
                                     type="text"
-                                    placeholder="Universidad de Egreso"
+                                    placeholder="Area Psicologica"
                                     required
+
                                 />
                                 <div className="invalid-feedback">
-                                    {errors.universidadEgreso?.message}
+                                    {errors.areaPsicologica?.message}
                                 </div>
                             </FloatingLabel>
 
@@ -298,6 +295,26 @@ const SignInPsicologo = () => {
                                 />
                                 <div className="invalid-feedback">
                                     {errors.areaEspecializacion?.message}
+                                </div>
+                            </FloatingLabel>
+                            <FloatingLabel
+                                label="Meses de experiencia"
+                                controlId="formBasicmesesExperiencia"
+                            >
+                                <Form.Control
+                                    className={`mx-2 form-control ${errors.mesesExperiencia
+                                        ? "is-invalid"
+                                        : ""
+                                        }`}
+                                    {...register("mesesExperiencia")}
+                                    type="number"
+                                    placeholder="Meses de Experiencia"
+                                    maxLength="2"
+                                    minLength="0"
+                                    defaultValue="0"
+                                />
+                                <div className="invalid-feedback">
+                                    {errors.mesesExperiencia?.message}
                                 </div>
                             </FloatingLabel>
 
