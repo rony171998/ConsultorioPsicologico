@@ -21,7 +21,7 @@ const getConfig = () => ({
 export const getValoraciones = () => (dispatch) => {
     dispatch(setIsLoading(true));
     return axios.get(`/valoracion`)
-        .then(res =>dispatch(setValoracion(res.data.valoracions)))
+        .then(res =>dispatch(setValoracion(res.data.valoraciones)))
         .catch(err => console.log(err))
         .finally(() => dispatch(setIsLoading(false)));
 }
@@ -29,7 +29,7 @@ export const getValoraciones = () => (dispatch) => {
 export const getMyValoraciones = () => (dispatch) => {
     dispatch(setIsLoading(true));
     return axios.get(`/valoracion/me`, getConfig())
-        .then(res =>dispatch(setValoracion(res.data.valoracions)))
+        .then(res =>dispatch(setValoracion(res.data.valoraciones)))
         .catch(err => console.log(err))
         .finally(() => dispatch(setIsLoading(false)));
 }

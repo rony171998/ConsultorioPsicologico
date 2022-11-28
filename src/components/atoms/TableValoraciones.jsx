@@ -14,9 +14,14 @@ const TablePsicologos = ({ dates }) => {
                             <tr>
                                 <th>Fecha</th>
                                 <th>Hora</th>
-                                <th>Estado</th>
+                                <th>Motivo</th>
+                                <th>diagnostico</th>
+                                <th>observaciones</th>
+                                <th>recomendaciones</th>
+                                <th>test</th>
                                 <th>Paciente</th>
                                 <th>Psicologo</th>
+                                <th>Estado</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -24,17 +29,14 @@ const TablePsicologos = ({ dates }) => {
                                 <tr key={date.id}>
                                     <td>{date.fecha}</td>
                                     <td>{date.hora}</td>
-                                    <td>{date.estado}</td>
-                                    <td>
-                                        {date.paciente.name +
-                                            " " +
-                                            date.paciente.apellidos}
-                                    </td>
-                                    <td>
-                                        {date.psicologo.name +
-                                            " " +
-                                            date.psicologo.apellidos}
-                                    </td>
+                                    <td>{date.motivo}</td>
+                                    <td>{date.diagnostico}</td>
+                                    <td>{date.observaciones}</td>
+                                    <td>{date.recomendaciones}</td>
+                                    <td>{date.test}</td>
+                                    <td>{date.paciente_id}</td>
+                                    <td>{date.psicologo_id}</td>
+                                    <td>{date.status}</td>                                   
                                 </tr>
                             ))}
                         </tbody>
