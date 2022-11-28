@@ -9,8 +9,8 @@ import { useDispatch } from "react-redux";
 const SignInPsicologo = () => {
     const formSchema = Yup.object().shape({
         name: Yup.string()
-        .required("El nombre es requerido")
-        .min(3, "El nombre debe tener al menos 3 caracteres"),
+            .required("El nombre es requerido")
+            .min(3, "El nombre debe tener al menos 3 caracteres"),
 
         telefono: Yup.string()
             .required("El telefono es requerido")
@@ -245,28 +245,6 @@ const SignInPsicologo = () => {
                                     />
                                 </FloatingLabel>
                             </InputGroup>
-
-                            <FloatingLabel
-                                label="Area Psicologica"
-                                controlId="formBasicareaPsicologica"
-                            >
-                                <Form.Control
-                                    className={`form-control ${errors.areaPsicologica
-                                        ? "is-invalid"
-                                        : ""
-                                        }`}
-                                    {...register("areaPsicologica")}
-                                    type="text"
-                                    placeholder="Area Psicologica"
-                                    required
-
-                                />
-                                <div className="invalid-feedback">
-                                    {errors.areaPsicologica?.message}
-                                </div>
-                            </FloatingLabel>
-
-
                             <FloatingLabel
                                 label="Meses de experiencia"
                                 controlId="formBasicmesesExperiencia"
@@ -287,7 +265,6 @@ const SignInPsicologo = () => {
                                     {errors.mesesExperiencia?.message}
                                 </div>
                             </FloatingLabel>
-
 
                             <FloatingLabel
                                 label="Area Psicologica"
