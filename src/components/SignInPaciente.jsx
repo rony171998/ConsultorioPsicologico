@@ -29,6 +29,7 @@ const SignInPaciente = () => {
     const dispatch = useDispatch();
 
     const submit = data => {
+        console.log(data);
         dispatch(registerPaciente(data));
         reset();
     };
@@ -56,14 +57,14 @@ const SignInPaciente = () => {
                             </InputGroup>
 
                             <Form.Group className="mb-2">
-                                <Form.Select {...register("sexo")} required>
+                                <Form.Select {...register("sexo")} data-testid="select-sexo"  required>
                                     <option value="">Sexo</option>
                                     <option value="M">Masculino</option>
                                     <option value="F">Femenino</option>
                                 </Form.Select>
                             </Form.Group>
                             <Form.Group className="mb-2">
-                                <Form.Select {...register("EPS")} required>
+                                <Form.Select {...register("EPS")} data-testid="select-EPS"  required>
                                     <option value="">EPS</option>
                                     <option value="sanitas">Sanitas</option>
                                     <option value="salutotal">Salu Total</option>
@@ -72,7 +73,7 @@ const SignInPaciente = () => {
 
                             <Form.Group className="mb-2">
                                 <Form.Select
-                                    {...register("ocupacion")}
+                                    {...register("ocupacion")} data-testid="select-ocupacion" 
                                     required
                                 >
                                     <option value="">Ocupacion</option>
@@ -112,7 +113,7 @@ const SignInPaciente = () => {
                             </Form.Group>
                             <InputGroup className="mb-2">
                                 <Form.Select
-                                    {...register("TipoDocumento")}
+                                    {...register("TipoDocumento")}  data-testid="select-documento" 
                                     required
                                 >
                                     <option value="">Tipo de Documento</option>

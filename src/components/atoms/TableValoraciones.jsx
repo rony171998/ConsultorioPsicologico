@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Table } from 'react-bootstrap';
 
-const TablePsicologos = ({ dates }) => {
+const TableValoraciones = ({ dates }) => {
     return (
         <div>
             <Card className='my-2 text-center'>
@@ -34,8 +34,8 @@ const TablePsicologos = ({ dates }) => {
                                     <td>{date.observaciones}</td>
                                     <td>{date.recomendaciones}</td>
                                     <td>{date.test}</td>
-                                    <td>{date.paciente_id}</td>
-                                    <td>{date.psicologo_id}</td>
+                                    <td>{date.pacienteId}</td>
+                                    <td>{date.psicologoId}</td>
                                     <td>{date.status}</td>                                   
                                 </tr>
                             ))}
@@ -48,4 +48,4 @@ const TablePsicologos = ({ dates }) => {
 };
 
 
-export default TablePsicologos;
+export default TableValoraciones;

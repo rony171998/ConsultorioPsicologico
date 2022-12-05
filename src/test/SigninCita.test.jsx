@@ -1,13 +1,21 @@
 import { SignInCita } from "../components";
 import { render, screen } from "@testing-library/react";
-import { server } from "../mocks/server";
 import { rest } from "msw";
 import userEvent from "@testing-library/user-event";
 import { HashRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "../store";
+import { setupServer } from "msw/lib/node";
 
 describe("SigninCita", () => {
+
+    const server = setupServer(
+        rest.post("http://localhost:4000/api/v1/cita", (req, res, ctx) => {
+            return res(
+                ctx.json(200),
+            );
+        })
+    );
 
     it("SigninCita", async () => {
 
@@ -18,37 +26,34 @@ describe("SigninCita", () => {
                 </HashRouter>
             </Provider>
         );
-        server.use(
-            rest.post("/cita", (req, res, ctx) => {
-                return res(ctx.status(404), ctx.json({ message: "No existe el usuario" }));
-            })
-        );
 
         const testData = {
-            "fecha": "2022-10-13",
-            "hora": "10:00",
-            "psicologo_id": "1",
-            "paciente_id": "1",
-            "motivo": "unos pedillos"
+            TipoDocumento: "Cedula de ciudadania",
+            paciente_id: "123456789",
+            fecha: "11/11/2021",
+            hora: "10:00",
+            motivo: "unos pedillos"
         }
 
+        const TipoDocumentoInput = screen.getByText(/Tipo de Documento/i);
+        const paciente_idInput = screen.getByPlaceholderText(/Numero de Identificacion/i);
         const fechaInput = screen.getByLabelText(/fecha/i);
         const horaInput = screen.getByLabelText(/hora/i);
-        const psicologoInput = screen.getByLabelText(/psicologo_id/i);
-        const pacienteInput = screen.getByLabelText(/paciente_id/i);
         const motivoInput = screen.getByLabelText(/motivo/i);
 
+        userEvent.type(TipoDocumentoInput, testData.TipoDocumento);
+        userEvent.type(paciente_idInput, testData.paciente_id);
         userEvent.type(fechaInput, testData.fecha);
         userEvent.type(horaInput, testData.hora);
-        userEvent.selectOptions(psicologoInput, testData.psicologo_id);
-        userEvent.type(pacienteInput, testData.paciente_id);
         userEvent.type(motivoInput, testData.motivo);
 
         const submitButton = screen.getByRole("button", { name: /registrar/i });
 
+        server.listen();
         userEvent.click(submitButton);
-        //const Message = screen.findByText(/alert/i);
+        
+        expect(motivoInput).toHaveValue(testData.motivo);
 
-
+        server.close();
     });
 });

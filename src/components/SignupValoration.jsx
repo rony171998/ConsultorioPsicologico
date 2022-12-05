@@ -11,7 +11,7 @@ const SignupValoration = () => {
     const submit = data => {
         console.log(data);
         dispatch(createValoracion(data))       
-        //reset();
+        reset();
     };
     
     return (
@@ -21,12 +21,11 @@ const SignupValoration = () => {
                     <Row xs={1} md={2}>
                         <Col>
                             <InputGroup className="mb-2">
-                                <Form.Select {...register("tipoDocumento")} required>
+                                <Form.Select {...register("tipoDocumento")} data-testid="select-documento" required>
                                     <option value="">Tipo de Documento</option>
                                     <option value="1">Cedula de Ciudadania</option>
                                     <option value="2">Cedula de Extranjeria</option>
                                     <option value="3">Pasaporte</option>
-
                                 </Form.Select>
                                 <Form.Control
                                     {...register("paciente_id")}
@@ -41,7 +40,7 @@ const SignupValoration = () => {
                                 <Form.Control
                                     {...register("fecha")}
                                     type="date"
-                                    placeholder="fecha y hora de la Valoracion"
+                                    placeholder="fecha de la Valoracion"
                                     min="2022-08-01"
                                     max={new Date().toISOString().split("T")[0]}                                  
                                     required
@@ -53,7 +52,7 @@ const SignupValoration = () => {
                                 <Form.Control
                                     {...register("hora")}
                                     type="time"
-                                    placeholder="fecha y hora de la Valoracion"
+                                    placeholder="hora de la Valoracion"
                                     min="07:00"
                                     max="17:00"
                                     required
@@ -86,7 +85,7 @@ const SignupValoration = () => {
 
                             </Form.Group>
                             <Form.Group className="mb-2" controlId="formBasictest">
-                                <Form.Select {...register("test")} required>
+                                <Form.Select {...register("test")}  data-testid="select-test" required>
                                     <option value="">Test</option>
                                     <option value="1">Test de Rorschach</option>
                                     <option value="2">Test de TAT</option>

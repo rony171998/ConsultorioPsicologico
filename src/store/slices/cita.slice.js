@@ -53,6 +53,7 @@ export const createCita = (data) => (dispatch) => {
             dispatch(getCitas());
         })
         .catch(err => swal( "error" , err.response.statusText , "error"))
+        .catch(err => console.log(err))
         .finally(() => dispatch(setIsLoading(false)));              
 }
 

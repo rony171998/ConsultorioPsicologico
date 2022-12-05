@@ -8,7 +8,10 @@ const NavBar = () => {
     return (
         <Navbar bg="primary" className="navbar-dark" expand="lg">
             <Container>
-                <Navbar.Brand href="/"> VitalMente </Navbar.Brand>
+                <Navbar.Brand style={{ width:"22%" }} href="/">
+                    <img style={{ width:"15%" }} src="https://cdn-icons-png.flaticon.com/512/564/564260.png" />{" "}
+                    ConsultorioPsicologico
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse className="text-white" id="navbarColor02">
                     <Nav className="me-auto">

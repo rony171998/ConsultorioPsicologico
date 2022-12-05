@@ -12,6 +12,7 @@ const TablePacientes = ({ dates }) => {
                     <Table striped bordered hover>
                         <thead>
                             <tr>
+                                <th>Paciente ID</th>
                                 <th>Nombres</th>
                                 <th>Ocupacion</th>
                                 <th>Estatus</th>
@@ -24,6 +25,7 @@ const TablePacientes = ({ dates }) => {
                         <tbody>
                             {dates.map(date => (
                                 <tr key={date.id}>
+                                    <td>{date.paciente_id}</td>
                                     <td>{date.name + " " + date.apellidos}</td>
                                     <td>{date.ocupacion}</td>
                                     <td>{date.status}</td>

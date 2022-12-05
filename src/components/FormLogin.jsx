@@ -3,6 +3,7 @@ import { Button, Card, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { swal } from "./swal";
 
 export const FormLogin = () => {
     const { register, handleSubmit } = useForm();
@@ -10,24 +11,26 @@ export const FormLogin = () => {
     const navigate = useNavigate();
 
     const submit = data => {
-        
-        axios
-            .post(`/${data.rol}/login`, data)
+
+        axios.post(`/${data.rol}/login`, data)
             .then(res => {
                 localStorage.setItem("token", res.data.token);
                 navigate(`/${data.rol}`);
+                console.log(res.data);
             })
             .catch(error => {
                 if (
                     error.response.status === 401 ||
                     error.response.status === 400
                 ) {
-                    alert("Usuario o contraseña incorrectos");
+                    swal("Error", error.response.data.message, "error");
                 }
                 if (error.response.status === 404) {
-                    alert("No existe el usuario");
+                    swal("Error", error.response.data.message, "error");
                 }
+                console.log(error.response);
             });
+            
     };
 
     return (
@@ -45,7 +48,7 @@ export const FormLogin = () => {
                         <br />
 
                         <Form.Label className="">Rol</Form.Label>
-                        <Form.Select {...register("rol")} required>
+                        <Form.Select {...register("rol")} data-testid="select-rol" required>
                             <option value="paciente">Paciente</option>
                             <option value="psicologo">Psicologo</option>
                         </Form.Select>

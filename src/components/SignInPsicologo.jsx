@@ -59,6 +59,7 @@ const SignInPsicologo = () => {
     const dispatch = useDispatch();
 
     const submit = data => {
+        console.log(data);
         dispatch(registerPsicologo(data));
         reset();
     };
