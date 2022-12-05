@@ -10,7 +10,7 @@ const ConsultarValoraciones = () => {
     useEffect(() => {
         dispatch(getValoraciones());
     }, [dispatch]);
-    console.log(valoraciones);
+    
     return (
         <div>
             <TableValoraciones dates={valoraciones} />
