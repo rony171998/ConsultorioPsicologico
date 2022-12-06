@@ -1,5 +1,5 @@
 import { SignUpValoration } from "../components";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { rest } from "msw";
 import { HashRouter } from "react-router-dom";
@@ -20,7 +20,7 @@ describe("SignUpValoracion", () => {
         })
     );
 
-    it("should render the component", () => {
+    it("should render the component", async () => {
         render(
             <Provider store={store}>
                 <HashRouter>
@@ -70,10 +70,10 @@ describe("SignUpValoracion", () => {
 
         server.listen();
         userEvent.click(submitButton);
+        await waitFor(() => expect(submitButton).not.toBeDisabled());
         
         expect(motivoCitaInput).toHaveValue(testData.motivoCita);
 
         server.close();
-
     });
 });

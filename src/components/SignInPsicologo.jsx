@@ -93,7 +93,7 @@ const SignInPsicologo = () => {
                                 className="mb-2"
                                 controlId="formBasicsexo"
                             >
-                                <Form.Select {...register("sexo")} required>
+                                <Form.Select {...register("sexo")} data-testid="select-sexo" required>
                                     <option value="">Sexo</option>
                                     <option value="M">Masculino</option>
                                     <option value="F">Femenino</option>
@@ -101,12 +101,12 @@ const SignInPsicologo = () => {
                             </Form.Group>
                             <Form.Group className="mb-2">
                                 <Form.Select
-                                    {...register("ocupacion")}
+                                    {...register("ocupacion")} data-testid="select-ocupacion"
                                     required
                                 >
                                     <option value="">Ocupacion</option>
-                                    <option value="M">Estudiante</option>
-                                    <option value="F">Profesional</option>
+                                    <option value="estudiante">Estudiante</option>
+                                    <option value="profesional">Profesional</option>
                                 </Form.Select>
                             </Form.Group>
 
@@ -154,7 +154,7 @@ const SignInPsicologo = () => {
 
                             <InputGroup className="mb-2">
                                 <Form.Select
-                                    {...register("TipoDocumento")}
+                                    {...register("TipoDocumento")} data-testid="select-documento"
                                     required
                                 >
                                     <option value="">Tipo de Documento</option>
@@ -197,7 +197,7 @@ const SignInPsicologo = () => {
                                     <Form.Control
                                         className={`ml-2 form-control ${errors.password ? "is-invalid" : ""
                                             }`}
-                                        {...register("password")}
+                                        {...register("password")} data-testid="contraseña"
                                         type="password"
                                         placeholder="Contraseña"
                                         minLength="8"
@@ -218,7 +218,7 @@ const SignInPsicologo = () => {
                                             ? "is-invalid"
                                             : ""
                                             }`}
-                                        {...register("confirmarContraseña")}
+                                        {...register("confirmarContraseña")} data-testid="confirmarContraseña"
                                         type="password"
                                         placeholder="Confirmar Contraseña"
                                         required

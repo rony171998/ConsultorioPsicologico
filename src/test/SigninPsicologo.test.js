@@ -1,5 +1,5 @@
 import { SignInPsicologo } from "../components";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { rest } from "msw";
 import { HashRouter } from "react-router-dom";
@@ -20,7 +20,7 @@ describe("SignUpPsicologo", () => {
         })
     );
 
-    it("should render the component", () => {
+    it("should render the component", async () => {
         render(
             <Provider store={store}>
                 <HashRouter>
@@ -33,33 +33,33 @@ describe("SignUpPsicologo", () => {
             name: "jorge",
             apellidos: "puche",
             sexo: "Masculino",
-            ocupacion: "psicologo",
+            ocupacion: "Estudiante",
             telefono: "3203237766",
             direccion: "calle 1 miami",
-            fechaNacimiento: "1998-04-17",
-            TipoDocumento: "Cedula de ciudadania",
+            fechaNacimiento: "04-17-1998",
+            TipoDocumento: "Cedula de Ciudadania",
             psicologo_id: "1234567891",
             email: "rony@gmail.com",
             password: "pass1234",
-            fechaEstudio: "2022-10-10",
-            universidad: "universodad popular del cesar",
+            fechaEstudio: "10-10-2022",
+            universidad: "upc",
             areaPsicologica: "area1",
             areaEspecializacion: "especializacion1",
-            mesesExperiencia: "0",
+            mesesExperiencia: "6",
         };
 
         const nameInput = screen.getByPlaceholderText("Nombre");
         const apellidosInput = screen.getByPlaceholderText("Apellido");
-        const sexoInput = screen.getByText("Sexo");
-        const ocupacionInput = screen.getByText(/ocupacion/i);
+        const sexoInput = screen.getByTestId("select-sexo");
+        const ocupacionInput = screen.getByTestId("select-ocupacion"); 
         const telefonoInput = screen.getByPlaceholderText(/telefono/i);
         const direccionInput = screen.getByPlaceholderText(/direccion/i);
         const fechaNacimientoInput = screen.getByLabelText(/Fecha de nacimiento/i);
-        const TipoDocumentoInput = screen.getByText(/Tipo de Documento/i);
-        const paciente_idInput = screen.getByPlaceholderText(/Numero Identificacion/i);
+        const TipoDocumentoInput = screen.getByTestId("select-documento");
+        const paciente_idInput = screen.getByPlaceholderText(/numero Identificacion/i);
         const emailInput = screen.getByPlaceholderText(/correo/i);
-        const passwordInput = screen.getAllByPlaceholderText(/contraseña/i);
-        const passwordrepeatInput = screen.getByPlaceholderText(/confirmar contraseña/i);
+        const passwordInput = screen.getByTestId("contraseña");
+        const passwordrepeatInput = screen.getByTestId("confirmarContraseña");
         const fechaEstudioInput = screen.getByPlaceholderText(/fecha Finalizacion Estudios/i);
         const universidadInput = screen.getByText("Universida de graduacion");
         const areaPsicologicaInput = screen.getByPlaceholderText(/Area Psicologica/i);
@@ -69,13 +69,13 @@ describe("SignUpPsicologo", () => {
 
         userEvent.type(nameInput, testData.name);
         userEvent.type(apellidosInput, testData.apellidos);
-        userEvent.type(sexoInput, testData.sexo);
-        userEvent.type(ocupacionInput, testData.ocupacion);
+        userEvent.selectOptions(sexoInput, [screen.getByText(testData.sexo)]);
+        userEvent.selectOptions(ocupacionInput, [screen.getByText(testData.ocupacion)]); 
         userEvent.type(telefonoInput, testData.telefono);
         userEvent.type(direccionInput, testData.direccion);
         userEvent.type(fechaNacimientoInput, testData.fechaNacimiento);
-        userEvent.type(TipoDocumentoInput, testData.TipoDocumento);
-        userEvent.type(paciente_idInput, testData.paciente_id);
+        userEvent.selectOptions(TipoDocumentoInput, [screen.getByText(testData.TipoDocumento)]);
+        userEvent.type(paciente_idInput, testData.psicologo_id);
         userEvent.type(emailInput, testData.email);
         userEvent.type(passwordInput, testData.password);
         userEvent.type(passwordrepeatInput, testData.password);
@@ -87,10 +87,10 @@ describe("SignUpPsicologo", () => {
 
         server.listen();
         userEvent.click(submitButton);
+        await waitFor(() => expect(submitButton).not.toBeDisabled());
         
         expect(nameInput).toHaveValue(testData.name);
 
         server.close();
-
     });
 });

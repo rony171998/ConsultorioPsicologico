@@ -1,5 +1,5 @@
 import { FormLogin } from "../components";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { HashRouter } from "react-router-dom";
@@ -58,7 +58,7 @@ describe("LoginUsertoServer", () => {
         );
 
         const mockUser = {
-            rol: "Psicologo",
+            rol: "Paciente",
             email: "rony@gmail.com",
             password: "pass1234",
         };
@@ -72,15 +72,15 @@ describe("LoginUsertoServer", () => {
         userEvent.type(passwordInput, mockUser.password);
         const submitButton = screen.getByRole("button", { name: /login/i });
 
-        //serverPaciente.listen();
+        serverPaciente.listen();
         serverPsicologo.listen();
 
         userEvent.click(submitButton);
-
-        expect(submitButton).toBeVisible();
-
+        await waitFor(() => expect(submitButton).not.toBeDisabled());
+        
+        expect(emailInput).toHaveValue(mockUser.email);
 
         serverPsicologo.close();
-        //serverPaciente.close();
+        serverPaciente.close();
     });
 });

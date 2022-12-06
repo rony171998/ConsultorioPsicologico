@@ -143,7 +143,7 @@ const SignInPaciente = () => {
                             </Form.Group>
                             <InputGroup className="mb-2">
                                 <Form.Control
-                                    {...register("password")}
+                                    {...register("password")} data-testid="contraseña"
                                     type="password"
                                     placeholder="Contraseña"
                                     minLength="8"
@@ -156,7 +156,7 @@ const SignInPaciente = () => {
                                 </div>
 
                                 <Form.Control
-                                    {...register("confirmarContraseña")}
+                                    {...register("confirmarContraseña")} data-testid="confirmarContraseña"
                                     type="password"
                                     placeholder="Confirmar Contraseña"
                                     isInvalid={errors.confirmarContraseña}

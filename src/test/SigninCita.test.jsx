@@ -1,5 +1,5 @@
 import { SignInCita } from "../components";
-import { render, screen } from "@testing-library/react";
+import { act, render, screen, waitFor } from "@testing-library/react";
 import { rest } from "msw";
 import userEvent from "@testing-library/user-event";
 import { HashRouter } from "react-router-dom";
@@ -28,21 +28,24 @@ describe("SigninCita", () => {
         );
 
         const testData = {
-            TipoDocumento: "Cedula de ciudadania",
-            paciente_id: "123456789",
-            fecha: "11/11/2021",
+            TipoDocumento: "Cedula de Ciudadania",
+            paciente_id: "123456789", 
+            psicologo_id: "Selecione un Psicologo",
+            fecha: "2",
             hora: "10:00",
-            motivo: "unos pedillos"
+            motivo: "unos pedillos para pedir la cita"
         }
 
-        const TipoDocumentoInput = screen.getByText(/Tipo de Documento/i);
+        const TipoDocumentoInput = screen.getByTestId("select-documento");
         const paciente_idInput = screen.getByPlaceholderText(/Numero de Identificacion/i);
-        const fechaInput = screen.getByLabelText(/fecha/i);
+        const psicologo_idInput = screen.getByTestId("select-psicologo");
+        const fechaInput = screen.getByPlaceholderText(/Fecha de la cita/i);
         const horaInput = screen.getByLabelText(/hora/i);
         const motivoInput = screen.getByLabelText(/motivo/i);
 
-        userEvent.type(TipoDocumentoInput, testData.TipoDocumento);
+        userEvent.selectOptions(TipoDocumentoInput, [screen.getByText(testData.TipoDocumento)]);
         userEvent.type(paciente_idInput, testData.paciente_id);
+        userEvent.selectOptions(psicologo_idInput, [screen.getByText(testData.psicologo_id)]); 
         userEvent.type(fechaInput, testData.fecha);
         userEvent.type(horaInput, testData.hora);
         userEvent.type(motivoInput, testData.motivo);
@@ -51,6 +54,7 @@ describe("SigninCita", () => {
 
         server.listen();
         userEvent.click(submitButton);
+        await waitFor(() => expect(submitButton).not.toBeDisabled());
         
         expect(motivoInput).toHaveValue(testData.motivo);
 

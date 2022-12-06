@@ -1,5 +1,5 @@
 import { SignInPaciente } from "../components";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { rest } from "msw";
 import { HashRouter } from "react-router-dom";
@@ -54,8 +54,8 @@ describe("SignInPaciente", () => {
         const TipoDocumentoInput = screen.getByTestId("select-documento");
         const paciente_idInput = screen.getByPlaceholderText(/Numero de Identificacion/i);
         const emailInput = screen.getByPlaceholderText(/correo/i);
-        const passwordInput = screen.getAllByPlaceholderText(/contraseña/i);
-        const passwordrepeatInput = screen.getByPlaceholderText(/confirmar contraseña/i);
+        const passwordInput = screen.getByTestId("contraseña");
+        const passwordrepeatInput = screen.getByTestId("confirmarContraseña"); 
         const submitButton = screen.getByRole("button", { name: /registrar/i });
 
         userEvent.type(nameInput, testData.name);
@@ -74,11 +74,12 @@ describe("SignInPaciente", () => {
 
         server.listen();
         userEvent.click(submitButton);
-        
+        await waitFor(() => {
+            expect(submitButton).not.toBeDisabled()
+        });
         expect(nameInput).toHaveValue(testData.name);
 
         server.close();
-
     });
 });
 

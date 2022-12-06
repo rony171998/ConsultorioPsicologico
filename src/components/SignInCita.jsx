@@ -9,6 +9,7 @@ const SignInCita = () => {
     const [psicologos, setPsicologos] = useState([]);
     const dispatch = useDispatch();
     const submit = data => {
+        console.log(data);
         dispatch(createCita(data));
         reset();
     };
@@ -26,7 +27,7 @@ const SignInCita = () => {
                 <Form onSubmit={handleSubmit(submit)}>
                     <InputGroup className="mb-2">
                         <Form.Select
-                            {...register("TipoDocumento")}
+                            {...register("TipoDocumento")}  data-testid="select-documento"
                             required
                         >
                             <option value="">Tipo de Documento</option>
@@ -50,13 +51,13 @@ const SignInCita = () => {
                         controlId="formBasicPsicologo_id"
                     >
                         <Form.Select
-                            {...register("psicologo_id")}
+                            {...register("psicologo_id")} data-testid="select-psicologo"
                             required
                         >
                             <option value="">
                                 Selecione un Psicologo
                             </option>
-                            {psicologos.map(psicologo => (
+                            {psicologos.map((psicologo , index) => (
                                 <option
                                     key={psicologo.id}
                                     value={psicologo.id}

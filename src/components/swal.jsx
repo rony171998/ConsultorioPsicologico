@@ -9,7 +9,7 @@ export const swal = ( title,message ,type) =>{
       confirmButtonText: "Aceptar",
       width: "400px",
       timer: 10000,
-      timerProgressBar: true,
+      timerProgressBar: true
    })
    
 }
