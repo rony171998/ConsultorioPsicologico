@@ -9,7 +9,7 @@ const NavBar = () => {
         <Navbar bg="primary" className="navbar-dark" expand="lg">
             <Container>
                 <Navbar.Brand style={{ width:"22%" }} href="/">
-                    <img style={{ width:"15%" }} src="https://cdn-icons-png.flaticon.com/512/564/564260.png" />{" "}
+                    <img style={{ width:"15%" }} src="https://cdn-icons-png.flaticon.com/512/564/564260.png" alt="logo" />{" "}
                     ConsultorioPsicologico
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -34,17 +34,20 @@ const NavBar = () => {
                             </NavDropdown.Item>
                         </NavDropdown>
                         <NavDropdown title="Consultas" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="/consultar-citas">
+                            <NavDropdown.Item href="#/consultar-citas">
                                 Consultar Citas
                             </NavDropdown.Item>
-                            <NavDropdown.Item href="/#/consultar-psicologos">
+                            <NavDropdown.Item href="#/consultar-psicologos">
                                 Consultar Psicologos
                             </NavDropdown.Item>
-                            <NavDropdown.Item href="/#/consultar-pacientes">
+                            <NavDropdown.Item href="#/consultar-pacientes">
                                 Consultar Pacientes
                             </NavDropdown.Item>
-                            <NavDropdown.Item href="/#/consultar-valoraciones">
+                            <NavDropdown.Item href="#/consultar-valoraciones">
                                 Consultar Valoraciones
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="#/consultar-empleados">
+                                Consultar Empleados
                             </NavDropdown.Item>
                         </NavDropdown>
                         <Nav.Link href="#/login"                          

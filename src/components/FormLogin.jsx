@@ -1,36 +1,32 @@
 import React, { useRef } from "react";
 import { Button, Card, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { swal } from "./swal";
+import { useLoginEmpleadoMutation } from "../store/api/empleadoapi";
+import { login } from "../store/slices/paciente.slice";
+import { login as loginpsicologo } from "../store/slices/psicologo.slice";
 
 export const FormLogin = () => {
     const { register, handleSubmit } = useForm();
+    const Loading = useSelector(state => state.isLoading);
+    const dispatch = useDispatch();
     const form = useRef();
     const navigate = useNavigate();
+    const [loginUser, { isLoading }] = useLoginEmpleadoMutation();
 
-    const submit = data => {
-
-        axios.post(`/${data.rol}/login`, data)
-            .then(res => {
-                localStorage.setItem("token", res.data.token);
-                navigate(`/${data.rol}`);
-                console.log(res.data);
-            })
-            .catch(error => {
-                if (
-                    error.response.status === 401 ||
-                    error.response.status === 400
-                ) {
-                    swal("Error", error.response.data.message, "error");
-                }
-                if (error.response.status === 404) {
-                    swal("Error", error.response.data.message, "error");
-                }
-                console.log(error.response);
-            });
-            
+    const submit = async (data) => {
+        console.log(data);
+        if (data.rol === "paciente") {
+            await new dispatch(login(data));
+            navigate("/paciente");
+        } else if (data.rol === "psicologo") {
+            await new dispatch(loginpsicologo(data));
+            navigate("/psicologo");
+        } else if (data.rol === "empleado") {
+            loginUser(data)
+            navigate("/admin");
+        }
     };
 
     return (
@@ -51,6 +47,7 @@ export const FormLogin = () => {
                         <Form.Select {...register("rol")} data-testid="select-rol" required>
                             <option value="paciente">Paciente</option>
                             <option value="psicologo">Psicologo</option>
+                            <option value="empleado">Administrador</option>
                         </Form.Select>
                     </Form.Group>
 
@@ -72,14 +69,14 @@ export const FormLogin = () => {
                             required
                         />
                     </Form.Group>
-                    <Button id="buttonLogin" variant="primary" type="submit">
-                        Login
+                    <Button id="buttonLogin" variant="primary" type="submit" disabled={isLoading || Loading}>
+                        {isLoading || Loading ? "Loading..." : "Login"}
                     </Button>
                     <br />
                     <Form.Label>Don't have an account? </Form.Label>
                     <br />
                     <a href="#/signup-paciente"> Sign Up</a>
-                    
+
                 </Form>
             </Card.Body>
         </div>

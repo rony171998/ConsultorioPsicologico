@@ -1,4 +1,4 @@
-import { Home, Login, P404, Paciente, Psicologo, Signin } from "./pages";
+import { ConsultarEmpleados, Home, Login, P404, Paciente, Psicologo } from "./pages";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import { NavBar, ProtectedRoutes, Footer } from "./components";
@@ -12,6 +12,7 @@ import SignupCita from "./pages/SignupCita";
 import SignupPaciente from "./pages/SignupPaciente";
 import SignupValoracion from "./pages/SignupValoracion";
 import ConsultarValoraciones from "./pages/ConsultValoraciones";
+import SignupEmpleado from "./pages/SignupEmpleado";
 
 function App() {
     return (
@@ -19,7 +20,6 @@ function App() {
             <NavBar />
             <Container>
                 <Routes>
-                    
                     <Route path="/login" element={<Login />} />
                     <Route path="/signup-paciente" element={<SignupPaciente />} />
                     <Route path="*" element={<P404 />} />
@@ -35,19 +35,20 @@ function App() {
                         />
                         <Route path="/paciente" element={<Paciente />} />
                         <Route path="/psicologo" element={<Psicologo />} />
-                        <Route path="/admin" element={<Admin />} />
 
+                        <Route path="/admin" element={<Admin />} />
                         <Route path="/consultar-citas" element={<ConsultarCitas />} />
                         <Route path="/consultar-psicologos" element={<ConsultarPsicologos />} />
                         <Route path="/consultar-pacientes" element={<ConsultarPacientes />} />
                         <Route path="/consultar-valoraciones" element={<ConsultarValoraciones />} />
-                        
+                        <Route path="/consultar-empleados" element={<ConsultarEmpleados />} />
+                            
                         <Route path="/signup-cita" element={<SignupCita />} />
                         <Route path="/signup-paciente" element={<SignupPaciente />} />
                         <Route path="/signup-psicologo" element={<SignupPsicologo />} />
                         <Route path="/signup-valoracion" element={<SignupValoracion />} />
-                        <Route path="/signup-empleado" element={<SignupPaciente />} />
-                        <Route path="/signin" element={<Signin rol={"psicologo"} />} />                   
+                        <Route path="/signup-empleado" element={<SignupEmpleado />} />
+                                        
                     </Route>
                 </Routes>
             </Container>

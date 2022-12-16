@@ -1,12 +1,13 @@
 import React from "react";
 import { Button, Card, Col, Form, InputGroup, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createValoracion } from "../store/slices/valoracion.slice";
 
 const SignupValoration = () => {
     const { register, handleSubmit, reset } = useForm()
     const dispatch = useDispatch()
+    const isLoading = useSelector(state => state.isLoading);
 
     const submit = data => {
         console.log(data);
@@ -155,7 +156,7 @@ const SignupValoration = () => {
                     </Button>
 
                     <Button variant="primary" type="submit" className="mx-1">
-                        Registrar
+                        {isLoading ? "Loading..." : "Guardar"}
                     </Button>
 
                 </Form>

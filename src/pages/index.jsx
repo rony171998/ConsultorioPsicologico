@@ -4,3 +4,4 @@ export {default as Signin} from "./Signin";
 export {default as P404 } from "./P404";
 export {default as Paciente} from "./Paciente";
 export {default as Psicologo} from "./Psicologo";
+export {default as ConsultarEmpleados} from "./ConsultEmpleado";

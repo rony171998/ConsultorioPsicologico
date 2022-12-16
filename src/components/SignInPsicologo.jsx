@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { registerPsicologo } from "../store/slices/psicologo.slice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const SignInPsicologo = () => {
     const formSchema = Yup.object().shape({
@@ -57,6 +57,7 @@ const SignInPsicologo = () => {
     const { register, handleSubmit, reset, formState } = useForm(formOptions);
     const { errors } = formState;
     const dispatch = useDispatch();
+    const isLoading = useSelector(state => state.isLoading);
 
     const submit = data => {
         console.log(data);
@@ -323,7 +324,7 @@ const SignInPsicologo = () => {
                         <Button variant="primary" type="submit" className="mx-auto"
                             style={{ width: "20%" }}
                         >
-                            Registrar
+                            {isLoading ? "Loading..." : "Registrarse"}
                         </Button>
                     </Row>
                 </Form>

@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Button, Card,  Form, } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createMeCita } from "../store/slices/cita.slice";
 
 const SignInCita = () => {
     const { register, handleSubmit, reset } = useForm();
     const [psicologos, setPsicologos] = useState([]);
     const dispatch = useDispatch();
+    const isLoading = useSelector(state => state.isLoading);
     const submit = data => {
         dispatch(createMeCita(data));
         reset();
@@ -91,7 +92,7 @@ const SignInCita = () => {
                         />
                     </Form.Group>
                     <Button variant="primary" type="submit" className="mx-1">
-                        Registrar
+                        {isLoading ? "Loading..." : "Crear Cita"}
                     </Button>
                 </Form>
             </Card.Body>

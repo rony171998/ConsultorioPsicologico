@@ -1,15 +1,9 @@
-import React,{useEffect} from 'react';
+import React from 'react';
 import { Card, Table } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
-import { getMyCitas } from '../store/slices/cita.slice';
 
-const ListDate = () => {
-    const dispatch = useDispatch();
-    let dates = useSelector(state => state.cita);
 
-    useEffect(() => {
-        dispatch(getMyCitas());
-    }, [dispatch]);
+const ListDate = ({dates}) => {
+    
     
     return (
         <div>

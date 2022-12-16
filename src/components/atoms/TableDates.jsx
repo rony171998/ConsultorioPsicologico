@@ -26,14 +26,14 @@ const TableDates = ({ dates }) => {
                                     <td>{date.hora}</td>
                                     <td>{date.estado}</td>
                                     <td>
-                                        {date.paciente.name +
+                                        {date.paciente?.name +
                                             " " +
-                                            date.paciente.apellidos}
+                                            date.paciente?.apellidos}
                                     </td>
                                     <td>
-                                        {date.psicologo.name +
+                                        {date.psicologo?.name +
                                             " " +
-                                            date.psicologo.apellidos}
+                                            date.psicologo?.apellidos}
                                     </td>
                                 </tr>
                             ))}

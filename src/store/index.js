@@ -4,6 +4,7 @@ import paciente from "./slices/paciente.slice";
 import cita from "./slices/cita.slice";
 import psicologo from "./slices/psicologo.slice";
 import valoracion from "./slices/valoracion.slice";
+import empleadoapi from "./api/empleadoapi";
 
 export default configureStore({
   reducer: {
@@ -11,6 +12,9 @@ export default configureStore({
     paciente,
     psicologo,
     cita,
-    valoracion
-  }
+    valoracion,
+    [empleadoapi.reducerPath]: empleadoapi.reducer,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(empleadoapi.middleware )
 });

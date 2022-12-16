@@ -1,10 +1,10 @@
 import React from "react";
-import { Button, Card, Col, Form, InputGroup, Row } from "react-bootstrap";
+import { Button, Card, Col, Form, InputGroup, Row, Spinner } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import {registerPaciente} from "../store/slices/paciente.slice"
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const SignInPaciente = () => {
     const formSchema = Yup.object().shape({
@@ -27,6 +27,7 @@ const SignInPaciente = () => {
     const { register, handleSubmit, reset, formState } = useForm(formOptions);
     const { errors } = formState;
     const dispatch = useDispatch();
+    const isLoading = useSelector(state => state.isLoading);
 
     const submit = data => {
         console.log(data);
@@ -170,7 +171,11 @@ const SignInPaciente = () => {
                     </Row>
                     
                     <Button variant="primary" type="submit" className="mx-1">
-                        Registrar
+                        {isLoading ? (
+                            <Spinner animation="border" size="sm" />
+                        ) : (
+                            "Registrarse"
+                        )}
                     </Button>
                 </Form>
             </Card.Body>

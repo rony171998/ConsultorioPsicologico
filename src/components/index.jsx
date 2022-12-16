@@ -9,5 +9,6 @@ export {default as ListDate} from "./ListDate";
 export {FormLogin } from "./FormLogin";
 export {default as SignInMeCita} from "./SignInMeCita";
 export {default as SignUpValoration} from "./SignupValoration";
+export {default as SignInEmpleado} from "./SignInEmpleado";
 
 
