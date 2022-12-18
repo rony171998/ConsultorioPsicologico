@@ -10,6 +10,7 @@
     "axios": "^0.27.2",
     "bootstrap": "^5.2.0",
     "bootswatch": "^5.2.0",
+    "firebase": "^9.15.0",
     "mdb-react-ui-kit": "^5.0.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
